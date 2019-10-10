@@ -5,10 +5,6 @@
  */
 package casilleros_mains;
 
-/**
- *
- * @author Badilla M
- */
 public class HolaMundoCasilleros {
    public static void main(String[] args)
     {
