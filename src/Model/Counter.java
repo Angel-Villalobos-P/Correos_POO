@@ -16,4 +16,7 @@ public class Counter {
     public Counter(){
     
     }
+    public boolean registrarCliente(Cliente pCliente){
+
+    }
 }

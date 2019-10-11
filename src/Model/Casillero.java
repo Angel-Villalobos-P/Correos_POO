@@ -12,5 +12,9 @@ public class Casillero {
     public Casillero(){
     
     }
+
+    public boolean asignarCasillero(Cliente pCliente){
+
+    }
     
 }
