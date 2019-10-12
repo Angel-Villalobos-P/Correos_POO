@@ -11,7 +11,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/NetBeansProjects/Proy1_Test/dist/lib/axis.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/axis.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -20,7 +20,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/NetBeansProjects/Proy1_Test/dist/lib/javax.mail.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/commons-discovery-0.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -29,7 +29,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/NetBeansProjects/Proy1_Test/dist/lib/commons-discovery-0.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/javax.mail.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -38,7 +38,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/NetBeansProjects/Proy1_Test/dist/lib/jaxrpc.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/javax.wsdl_1.6.2.v201012040545.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -47,7 +47,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/NetBeansProjects/Proy1_Test/dist/lib/javax.wsdl_1.6.2.v201012040545.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jaxrpc.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -56,7 +56,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/NetBeansProjects/Proy1_Test/dist/lib/org.apache.commons.logging_1.2.0.v20180409-1502.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/org.apache.commons.logging_1.2.0.v20180409-1502.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
