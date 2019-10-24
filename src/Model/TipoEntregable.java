@@ -5,6 +5,10 @@
  */
 package Model;
 
-public enum TipoSexo {
-    Hombre, Mujer, otro;
+/**
+ *
+ * @author Badilla M
+ */
+public enum TipoEntregable {
+    Paquete,Sobre,Revista;
 }

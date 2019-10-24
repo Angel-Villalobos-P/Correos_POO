@@ -7,11 +7,26 @@ package Model;
 
 
 public class Entregable {
-    private int numReferense;
-    private boolean entregado;
-    private String descripcion;
-    private String remitente;
-    private Sobre sobre;
-    private Paquete paquete;
-    private Revista revista;
+    protected int numReferense;
+    protected boolean entregado;
+    protected TipoEntregable descripcion;
+    protected String remitente;
+    
+    public Entregable(int numReferencia, boolean entregado, TipoEntregable descripcion, String remitente){
+        this.numReferense=numReferencia;
+        this.entregado=entregado;
+        this.descripcion=descripcion;
+        this.remitente=remitente;
+    }
+    public void calcularImpuesto(){
+        
+    }
+    //@Override
+    public String toStringInicial() {
+        return "       " + "Numero de referencia=" + numReferense + 
+                ", Entregablo/no=" + entregado + 
+                ", Desclipcion=" + descripcion + 
+                ", Remitente=" + remitente + '}'+"\n"; 
+    }
 }
+
