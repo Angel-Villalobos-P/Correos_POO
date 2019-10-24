@@ -18,18 +18,18 @@ import Model.TipoTemaRevista;
 import java.util.ArrayList;
 
 public class Sistema {
-    
+    Counter miCounter;
     
     public Sistema(){
-    
+        miCounter = null;
     }
-    public Counter inicializarCounter(String nombre,String cedula, Direccion direccion, int cantidadCasilleros){
-        Counter CorreoCR = new Counter(nombre, cedula, direccion, cantidadCasilleros);
-        return CorreoCR;
+
+    public void inicializarCounter(String nombre,String cedula, Direccion direccion, int cantidadCasilleros){
+        this.miCounter = new Counter(nombre, cedula, direccion, cantidadCasilleros);
+
     }
-    public Direccion crearDireccion(String provincia,String canton, String distrito, String senias){
-        Direccion direccion=new Direccion(provincia,canton,distrito,senias);
+    public Direccion crearDireccion(String provincia,String canton, String distrito, String senias) {
+        Direccion direccion = new Direccion(provincia, canton, distrito, senias);
         return direccion;
     }
-    
 }
