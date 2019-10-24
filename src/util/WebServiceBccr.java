@@ -2,6 +2,8 @@ package util;
 
 import cr.fi.bccr.sdde.ws.WsIndicadoresEconomicosSoap;
 import cr.fi.bccr.sdde.ws.WsIndicadoresEconomicosSoapProxy;
+
+import javax.jws.WebService;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
