@@ -21,9 +21,16 @@ public class Counter {
         this.nombre=nombre;
         this.cedula=cedula;
         this.direccion=direccion;
-        this.cantidadCasilleros=cantidadCasilleros;
+        //this.cantidadCasilleros=cantidadCasilleros;
         registroCasilleros = new ArrayList<>();
+
+        for (int i=0;i<cantidadCasilleros;i++){
+            Casillero casillero = new Casillero(i+1000);
+            registroCasilleros.add(casillero);
+        }
     }
+
+
     public void setNombre(String nombre){
         this.nombre=nombre;
     }
@@ -33,12 +40,61 @@ public class Counter {
     public void setDireccion(Direccion direccion){
         this.direccion=direccion;
     }
-    public void setCantidadCasilleros(int cantidadCasilleros){
-        this.cantidadCasilleros=cantidadCasilleros;
+    public void setCantidadCasilleros(int cantidadCasilleros) {
+        this.cantidadCasilleros = cantidadCasilleros;
     }
-    public void addCasillero(Casillero casi){
-        registroCasilleros.add(casi);
+
+    public boolean registrarCliente(Cliente cliente) {
+        for (int i = 0; i < registroCasilleros.size(); i++){
+            if (registroCasilleros.get(i).getCliente().getId() == cliente.getId()) {
+                return false;
+            }
+            if (registroCasilleros.get(i).getEstado() == (TipoEstadoCasillero.Libre)) {
+                registroCasilleros.get(i).setCliente(cliente);
+                return true;
+            }
+        }
+        return false;
     }
+
+    public boolean modificarCliente(int id,Cliente clienteMod){
+        for (int i = 0; i < registroCasilleros.size(); i++){
+            if (registroCasilleros.get(i).getCliente().getId() == id) {
+                registroCasilleros.get(i).setCliente(clienteMod);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Cliente consultarCliente(int id){
+        Cliente clienteConsultado = null;
+        for (int i = 0; i < registroCasilleros.size(); i++){
+            if (registroCasilleros.get(i).getEstado() == TipoEstadoCasillero.Libre){
+                break;
+            }
+            if (registroCasilleros.get(i).getCliente().getId() ==id) {
+                return registroCasilleros.get(i).getCliente();
+            }
+        }
+        return clienteConsultado;
+    }
+
+    public boolean eliminarCliente(int id){
+        for (int i = 0; i < registroCasilleros.size(); i++){
+            if (registroCasilleros.get(i).getEstado() == TipoEstadoCasillero.Libre){
+                break;
+            }
+            if (registroCasilleros.get(i).getCliente().getId() ==id) {
+                registroCasilleros.get(i).setCliente(null);
+                registroCasilleros.get(i).setEstado(TipoEstadoCasillero.Libre);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     @Override
     public String toString() {
         return "Counter{" + "Nombre=" + nombre + 

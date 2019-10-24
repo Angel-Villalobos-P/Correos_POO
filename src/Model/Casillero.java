@@ -14,7 +14,7 @@ public class Casillero {
     
     public Casillero(int nCasillero){
         this.numCasillero=nCasillero;
-        this.estado=TipoEstadoCasillero.Ocupado;
+        this.estado=TipoEstadoCasillero.Libre;
         this.cliente=null;
         registroEntregable=new ArrayList<>();
     }
@@ -26,6 +26,7 @@ public class Casillero {
     }
     public void setCliente(Cliente newC){
         this.cliente=newC;
+        this.estado = TipoEstadoCasillero.Ocupado;
     }
     public void addEntregable(Entregable entregable){
         registroEntregable.add(entregable);
@@ -36,6 +37,20 @@ public class Casillero {
                 ", Cliente=" + cliente + 
                 ", Estado del Casillero=" + estado + '}'+"\n";  
     }
-    
-    
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public int getNumCasillero() {
+        return numCasillero;
+    }
+
+    public TipoEstadoCasillero getEstado() {
+        return estado;
+    }
+
+    public ArrayList<Entregable> getRegistroEntregable() {
+        return registroEntregable;
+    }
 }

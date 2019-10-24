@@ -31,77 +31,13 @@ public class MAIN2 {
         //Sistema sistema=new Sistema();
         //Direccion direccionCounter=null;
         //Counter counter=null;
-        /*//MENU//
-        Scanner sn = new Scanner(System.in);
-        boolean salir = false;
-        int opcion; //Guardaremos la opcion del usuario
- 
-        while (!salir) {
-            System.out.println("1. Crearcion de Counter 1");
-            System.out.println("2. Administracion de Clientes 2");
-            System.out.println("3. Recepcion de articulos 3");
-            System.out.println("4. Retiro de articulos 4");
-            System.out.println("5. Consulta de Entregables 5");
-            System.out.println("6. Consulta de Tipo de cambio 6");
-            System.out.println("7. Listado de clientes con paquetes pendiente7");
-            System.out.println("8. Reporte de resumen contable8");
-            
-            
-            System.out.println("9. Salir");
- 
-            try {
- 
-                System.out.println("Escribe una de las opciones");
-                opcion = sn.nextInt();
- 
-                switch (opcion) {
-                    case 1:
-                        if (counter==null){
-                            Scanner entrada = new Scanner(System.in);
-                            //System.out.print("Nombre del counter: ");
-                            String nombreCounter = entrada.nextLine();
-                            //System.out.print("CedulaJ del counter: ");
-                            String cedulaCounter = entrada.nextLine();
-                            //System.out.print("Direccion del counter: ");
-                            //System.out.print("Provincia: ");
-                            String provinciaCounter = entrada.nextLine();
-                            //System.out.print("Canton: ");
-                            String cantonCounter = entrada.nextLine();
-                            //System.out.print("Distrito: ");
-                            String distritoCounter = entrada.nextLine();
-                            //System.out.print("Señas: ");
-                            String seniasCounter = entrada.nextLine();
-                            //System.out.print("Cantidad de casilleros del counter: ");
-                            int cantCasilleros = entrada.nextInt();
-                            direccionCounter = Sistema.crearDireccion(provinciaCounter, cantonCounter, distritoCounter, seniasCounter);
-                            counter = Sistema.inicializarCounter(nombreCounter, cedulaCounter, null, cantCasilleros);
-                        }
-                        else{
-                            System.out.println("El counter ya esta creado");
-                        }
-                        break;
-                    case 2:
-                        System.out.println("Has seleccionado la opcion 2");
-                        break;
-                    case 3:
-                        System.out.println("Has seleccionado la opcion 3");
-                        break;
-                    case 4:
-                        salir = true;
-                        break;
-                    default:
-                        System.out.println("Solo números entre 1 y 4");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Debes insertar un número");
-                sn.next();
-            }
-        }//MENU FIN;*/
+
  
     
-    /*Sistema sistema=new Sistema();
+        Sistema sistema=new Sistema();
         //1-Inicializar Counter//
-        Counter counter = Sistema.inicializarCounter();
+        Direccion direccion = new Direccion("Cartago","La Unión","Tres Ríos","Donde Doña Lela");
+        sistema.crearCounter("La POOsada","412341245",direccion,1000);
         //2-*/
         
         
