@@ -11,8 +11,8 @@ public class Revista extends Entregable{
     private boolean isCatalogo;
     private TipoTemaRevista tema;
     
-    public Revista(int numReferencia,boolean entregado, TipoEntregable descripcion,String remitente,String nombre,boolean isCatalogo,TipoTemaRevista tema){
-        super(numReferencia,entregado,descripcion,remitente);
+    public Revista(int numReferencia,boolean entregado, TipoEntregable descripcion,String remitente,double precio,String nombre,boolean isCatalogo,TipoTemaRevista tema){
+        super(numReferencia,entregado,descripcion,remitente,precio);
         this.nombre=nombre;
         this.isCatalogo=isCatalogo;
         this.tema=tema;
@@ -23,6 +23,16 @@ public class Revista extends Entregable{
                 ", Catalogo/no=" + isCatalogo + 
                 ", Tema de Revista=" + tema + ", "; 
     }
-    
-    
+
+
+    @Override
+    public double calcularImpuesto() {
+        return isCatalogo ? 0:1;
+    }
+
+    @Override
+    public double calcularPrecio(TipoRango rango) {
+        return precio - precio*calcularDescuento(rango) + calcularImpuesto();
+    }
+
 }

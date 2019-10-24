@@ -6,21 +6,23 @@
 package Model;
 
 
-public class Entregable {
+public abstract class Entregable {
     protected int numReferense;
     protected boolean entregado;
     protected TipoEntregable descripcion;
     protected String remitente;
+    protected double precio;
     
-    public Entregable(int numReferencia, boolean entregado, TipoEntregable descripcion, String remitente){
+    public Entregable(int numReferencia, boolean entregado, TipoEntregable descripcion, String remitente,double precio){
         this.numReferense=numReferencia;
         this.entregado=entregado;
         this.descripcion=descripcion;
         this.remitente=remitente;
+        this.precio = precio;
     }
-    public void calcularImpuesto(){
-        
-    }
+    public abstract double calcularImpuesto();
+
+
     //@Override
     public String toStringInicial() {
         return "       " + "Numero de referencia=" + numReferense + 
@@ -28,5 +30,17 @@ public class Entregable {
                 ", Desclipcion=" + descripcion + 
                 ", Remitente=" + remitente + '}'+"\n"; 
     }
+
+    protected double calcularDescuento(TipoRango rango){
+        if (rango == TipoRango.Plata) {
+            return 0.05;
+        }
+        if (rango == TipoRango.Oro) {
+            return 0.10;
+        }
+        return 0;
+    }
+
+    public abstract double calcularPrecio(TipoRango rango);
 }
 
