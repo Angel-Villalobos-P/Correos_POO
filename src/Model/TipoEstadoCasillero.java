@@ -5,6 +5,6 @@
  */
 package Model;
 
-public enum TipoSexo {
-    Hombre, Mujer, otro;
+public enum TipoEstadoCasillero {
+    Libre,Ocupado;
 }

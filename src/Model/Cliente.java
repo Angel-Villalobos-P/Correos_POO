@@ -17,8 +17,29 @@ public class Cliente {
     private TipoSexo sexo;
     private int PaquetesRetirados;
     
-    public Cliente(){
+    public Cliente(int id,String nombre,String correo,String telefono,Direccion direccion,Date fecha,TipoSexo sexo){
+        this.id=id;
+        this.nombre=nombre;
+        this.correo=correo;
+        this.telefono=telefono;
+        this.direccion=direccion;
+        this.fechaNacimiento=fecha;
+        this.tipo=TipoRango.Normal;
+        this.sexo=sexo;
+        this.PaquetesRetirados=0;
+    }
     
+    @Override
+    public String toString() {
+        return "Cliente{" + "ID=" + id + 
+                ", Nombre=" + nombre + 
+                ", Correo=" + correo + 
+                ", Telefono=" + telefono + 
+                ", Direccion=" + direccion + 
+                ", Fecha de Nacimiento=" + fechaNacimiento + 
+                ", Tipo de Cliente=" + tipo + 
+                ", Sexo=" + sexo + 
+                ", Paquetes Retirados=" + PaquetesRetirados + '}'+"\n";  
     }
     
 }

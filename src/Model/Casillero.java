@@ -4,35 +4,38 @@
  * and open the template in the editor.
  */
 package Model;
-        
+import java.util.ArrayList;
+
 public class Casillero {
-    private boolean estaOcupado;
     private Cliente cliente;
-    private static int numeroCasillero = 1000;
-
-    public Casillero(){
-        numeroCasillero++;
+    private int numCasillero;
+    private TipoEstadoCasillero estado;
+    private ArrayList<Entregable> registroEntregable;
+    
+    public Casillero(int nCasillero){
+        this.numCasillero=nCasillero;
+        this.estado=TipoEstadoCasillero.Ocupado;
+        this.cliente=null;
+        registroEntregable=new ArrayList<>();
     }
-
-    /**
-     * Asigna un cliente al casillero
-     * @param pCliente cliente que se asignara al casillero
-     * @return true si el cliente es agreado y false si el casillero ya tenia cliente
-     */
-    public boolean asignarCasillero(Cliente pCliente){
-        if (cliente == null) {
-            cliente = pCliente;
-            estaOcupado = true;
-            return true;
-        }
-        return false;
+    public void setEstado(TipoEstadoCasillero estado){
+        this.estado=estado;
     }
-
-    public Cliente getCliente() {
-        return cliente;
+    public void setNumeroCasillero(int nCasillero){
+        this.numCasillero=nCasillero;
     }
-
-    public boolean getEstado() {
-        return estaOcupado;
+    public void setCliente(Cliente newC){
+        this.cliente=newC;
     }
+    public void addEntregable(Entregable entregable){
+        registroEntregable.add(entregable);
+    }
+    @Override
+    public String toString() {
+        return "Casillero{" + "Numero de casillero=" + numCasillero + 
+                ", Cliente=" + cliente + 
+                ", Estado del Casillero=" + estado + '}'+"\n";  
+    }
+    
+    
 }
