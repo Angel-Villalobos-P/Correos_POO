@@ -109,7 +109,7 @@ public class MAIN2 {
         casilleroN.addEntregable(SobreN);
         
         //agregarCasillero al Counter
-        CorreoCR.addCasillero(casilleroN);
+        //CorreoCR.addCasillero(casilleroN);
         //Imprimir//
         //Imprimir Entregables//
         System.out.println(PaqueteN.toString());

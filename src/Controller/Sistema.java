@@ -15,40 +15,43 @@ import Model.Sobre;
 import Model.Revista;
 import Model.TipoSobre;
 import Model.TipoTemaRevista;
+import util.WebServiceBccr;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Sistema {
     Counter miCounter;
-    
-    public Sistema(){
+
+    public Sistema() {
         miCounter = null;
     }
 
-    public boolean crearCounter(String nombre,String cedula, Direccion direccion, int cantidadCasilleros){
-        if(miCounter == null) {
+    public boolean crearCounter(String nombre, String cedula, Direccion direccion, int cantidadCasilleros) {
+        if (miCounter == null) {
             this.miCounter = new Counter(nombre, cedula, direccion, cantidadCasilleros);
             return true;
         }
         return false;
 
     }
-    public Direccion crearDireccion(String provincia,String canton, String distrito, String senias) {
+
+    public Direccion crearDireccion(String provincia, String canton, String distrito, String senias) {
         Direccion direccion = new Direccion(provincia, canton, distrito, senias);
         return direccion;
     }
 
-    private boolean validarNumero (String numero){
-        if (numero.length() == 8){
+    private boolean validarNumero(String numero) {
+        if (numero.length() == 8) {
             return true;
         }
         return false;
     }
 
-    private boolean validarCorreo(String correo){
+    private boolean validarCorreo(String correo) {
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
         Matcher mather = pattern.matcher(correo);
         if (mather.find() == true) {
@@ -59,5 +62,26 @@ public class Sistema {
             return false;
         }
 
+    }
+
+    public String consultarCambio(Date fecha) {
+        WebServiceBccr servicio = new WebServiceBccr();
+
+        try {
+            return Double.toString(servicio.getCambioCompra(fecha));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public String consultarVenta(Date fecha) {
+        WebServiceBccr servicio = new WebServiceBccr();
+        try {
+            return Double.toString(servicio.getCambioVenta(fecha));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }
