@@ -21,7 +21,7 @@ public class Revista extends Entregable{
     public String toString() {
         return "Revista{" + "Nombre=" + nombre + 
                 ", Catalogo/no=" + isCatalogo + 
-                ", Tema de Revista=" + tema + ", "; 
+                ", Tema de Revista=" + tema + ", ";
     }
 
 

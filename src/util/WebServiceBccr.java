@@ -3,14 +3,7 @@ package util;
 import cr.fi.bccr.sdde.ws.WsIndicadoresEconomicosSoap;
 import cr.fi.bccr.sdde.ws.WsIndicadoresEconomicosSoapProxy;
 
-import javax.jws.WebService;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.Date;
 
 

@@ -5,7 +5,10 @@
  */
 package Model;
 
-
+/**
+ *
+ *
+ * */
 public enum TipoTemaRevista {
     negocios,moda,belleza,tecnologia,salud,medicina,cocina,otro;
 }

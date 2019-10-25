@@ -6,7 +6,7 @@
 package Model;
 import java.util.ArrayList;
 
-public class Casillero {
+public class Casillero implements IRango{
     private Cliente cliente;
     private int numCasillero;
     private TipoEstadoCasillero estado;
@@ -52,5 +52,15 @@ public class Casillero {
 
     public ArrayList<Entregable> getRegistroEntregable() {
         return registroEntregable;
+    }
+
+    public void getRanking(){
+        if (cliente.getPaquetesRetirados() >= SILVER_RANK && cliente.getPaquetesRetirados() < GOLD_RANK){
+            cliente.setTipo(TipoRango.Plata);
+        } else if (cliente.getPaquetesRetirados() >= GOLD_RANK){
+            cliente.setTipo(TipoRango.Oro);
+        } else {
+
+        }
     }
 }

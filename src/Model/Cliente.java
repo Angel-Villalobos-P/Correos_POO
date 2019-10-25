@@ -113,4 +113,8 @@ public class Cliente {
     public void setPaquetesRetirados(int paquetesRetirados) {
         PaquetesRetirados = paquetesRetirados;
     }
+
+    public void retirarPaquete(int cantidad){
+        this.PaquetesRetirados += cantidad;
+    }
 }
