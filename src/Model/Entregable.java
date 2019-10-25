@@ -26,8 +26,8 @@ public abstract class Entregable {
     //@Override
     public String toStringInicial() {
         return "       " + "Numero de referencia=" + numReferense + 
-                ", Entregablo/no=" + entregado + 
-                ", Desclipcion=" + descripcion + 
+                ", Entregablo/no=" + entregado +
+                ", Desclipcion=" + descripcion +
                 ", Remitente=" + remitente + '}'+"\n"; 
     }
 
