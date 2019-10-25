@@ -5,6 +5,9 @@
  */
 package Model;
 
+/**
+ * Tipos de sexo disponible para el cliente
+ * */
 public enum TipoSexo {
     Hombre, Mujer, otro;
 }

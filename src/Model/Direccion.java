@@ -5,15 +5,32 @@
  */
 package Model;
 
-
+/**
+ * El objeto Dirección representa la dirección fisica de un lugar, persona, acontecimiento, entre otros
+ * */
 public class Direccion {
     private String provincia;
     private String canton;
     private String distrito;
     private String senias;
-    
+
+    /**
+     * Constructor de la Dirección, es una dirección vacía
+     * */
     public Direccion(){
+        provincia = "";
+        canton = "";
+        distrito = "";
+        senias = "";
     }
+
+    /**
+     * Constructor de la dirección
+     * @param provincia provincia de residencia
+     * @param canton cantón de residencia
+     * @param distrito distrito de residencia
+     * @param senias indicaciones físicas para facilitar la localización. Ej: color, objetos, locales, objetos
+     * */
     public Direccion(String provincia,String canton, String distrito, String senias){
         this.provincia=provincia;
         this.canton=canton;
