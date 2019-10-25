@@ -6,12 +6,20 @@
 package Model;
 import java.util.ArrayList;
 
-public class Casillero implements IRango{
+/**
+ * Se comporta como un contenedor de paquetes y puede estar asignado a un cliente, tiene una identifación
+ * */
+public class Casillero{
     private Cliente cliente;
     private int numCasillero;
     private TipoEstadoCasillero estado;
     private ArrayList<Entregable> registroEntregable;
-    
+
+    /**
+     * Constructor del Casillero, no tiene dueño y no tiene elementos guardados
+     * @param nCasillero id del casillero que se le asignó
+     *
+     * */
     public Casillero(int nCasillero){
         this.numCasillero=nCasillero;
         this.estado=TipoEstadoCasillero.Libre;
@@ -28,9 +36,15 @@ public class Casillero implements IRango{
         this.cliente=newC;
         this.estado = TipoEstadoCasillero.Ocupado;
     }
+
+    /**
+     * Agrega un paquete al casillero
+     * @param entregable Un artículo recibido de tipo Entregable
+     * */
     public void addEntregable(Entregable entregable){
         registroEntregable.add(entregable);
     }
+
     @Override
     public String toString() {
         return "Casillero{" + "Numero de casillero=" + numCasillero + 
@@ -54,13 +68,5 @@ public class Casillero implements IRango{
         return registroEntregable;
     }
 
-    public void getRanking(){
-        if (cliente.getPaquetesRetirados() >= SILVER_RANK && cliente.getPaquetesRetirados() < GOLD_RANK){
-            cliente.setTipo(TipoRango.Plata);
-        } else if (cliente.getPaquetesRetirados() >= GOLD_RANK){
-            cliente.setTipo(TipoRango.Oro);
-        } else {
 
-        }
-    }
 }

@@ -6,11 +6,25 @@
 package Model;
 
 
+/**
+ * Un artículo pequeño, puede ser entregado de varias maneras y tiene un peso.
+ * */
 public class Sobre extends Entregable {
     private TipoSobre tipo;
     private String contenido;
     private double peso;
-    
+
+    /**
+     * Constructor de la clase
+     * @param descripcion tipo del entregable
+     * @param entregado un estado que indica si el artículo a sido entregado
+     * @param numReferencia identificacion del artículo
+     * @param precio precio del artículo
+     * @param remitente la persona o compañía que envía el artículo
+     * @param peso peso del sobre en kg
+     * @param contenido contenido del sobre, puede ser "Documento" u otra cosa
+     * @param tipo forma de entrega del sobre, ej: manila, aéreo
+     * */
     public Sobre(int numReferencia,boolean entregado, TipoEntregable descripcion,String remitente,double precio
                  ,TipoSobre tipo, String contenido, double peso){
         super(numReferencia,entregado,descripcion,remitente,precio);
@@ -26,6 +40,9 @@ public class Sobre extends Entregable {
     }
 
     @Override
+    /**
+     * Calcula el impuesto del artículo
+     * */
     public double calcularImpuesto() {
         double impuestoDolar = 0;
         if (tipo == TipoSobre.manila && contenido.equalsIgnoreCase("Documento")){
@@ -42,6 +59,10 @@ public class Sobre extends Entregable {
     }
 
     @Override
+    /**
+     * Calcula el precio total con el impuesto y el descuento
+     * @param rango Tipo de rango
+     * */
     public double calcularPrecio(TipoRango rango) {
         return precio - precio*calcularDescuento(rango) + calcularImpuesto();
     }

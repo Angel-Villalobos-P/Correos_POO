@@ -7,22 +7,34 @@ package Model;
 
 import java.util.ArrayList;
 
+
+/**
+ * El Counter contiene los casilleros que van a ser creados vacíos. Va a recibir artículos y es capaz de almacenar estos mismos.
+ * */
 public class Counter {
     private String nombre;
     private String cedula;
     private Direccion direccion;
     private int cantidadCasilleros;
     private ArrayList<Casillero> registroCasilleros;
-    
-    public Counter(){
-        registroCasilleros = new ArrayList<>();
-    }
+    private ArrayList<Entregable> registroEntregablesSinDueño;
+    private ArrayList<Entregable> registroEntregablesEntregados;
+
+    /**
+     * Constructor del Counter
+     * @param nombre Nombre del counter
+     * @param cedula cédula jurídica del counter
+     * @param direccion dirección del counter
+     * @param cantidadCasilleros cantidad de casilleros disponibles que va a tener el counter
+     * */
     public Counter(String nombre,String cedula, Direccion direccion, int cantidadCasilleros){
         this.nombre=nombre;
         this.cedula=cedula;
         this.direccion=direccion;
         //this.cantidadCasilleros=cantidadCasilleros;
         registroCasilleros = new ArrayList<>();
+        registroEntregablesSinDueño = new ArrayList<>();
+        registroEntregablesEntregados = new ArrayList<>();
 
         for (int i=0;i<cantidadCasilleros;i++){
             Casillero casillero = new Casillero(i+1000);
@@ -44,6 +56,11 @@ public class Counter {
         this.cantidadCasilleros = cantidadCasilleros;
     }
 
+    /**
+     * Registra el cliente a un casillero vacío
+     * @param cliente cliente que quiere registrarse
+     * @return true si se registró exitosamente el cliente, false en los demás casos
+     * */
     public boolean registrarCliente(Cliente cliente) {
         for (int i = 0; i < registroCasilleros.size(); i++){
             if (registroCasilleros.get(i).getCliente().getId() == cliente.getId()) {
@@ -57,6 +74,7 @@ public class Counter {
         return false;
     }
 
+
     public boolean modificarCliente(int id,Cliente clienteMod){
         for (int i = 0; i < registroCasilleros.size(); i++){
             if (registroCasilleros.get(i).getCliente().getId() == id) {
@@ -67,6 +85,11 @@ public class Counter {
         return false;
     }
 
+    /**
+     * Consulta un cliente registrado en el counter
+     * @param id identificación del cliente que se quiere buscar
+     * @return Retorna el cliente deseado si se encontró, en caso contrario devuelve un null
+     * */
     public Cliente consultarCliente(int id){
         Cliente clienteConsultado = null;
         for (int i = 0; i < registroCasilleros.size(); i++){
@@ -80,6 +103,11 @@ public class Counter {
         return clienteConsultado;
     }
 
+    /**
+     * Elimima un cliente registrado en el counter
+     * @param id identificación del cliente que se quiere eliminar
+     * @return true si se eliminó exitosamente el cliente, false en los demás casos
+     * */
     public boolean eliminarCliente(int id){
         for (int i = 0; i < registroCasilleros.size(); i++){
             if (registroCasilleros.get(i).getEstado() == TipoEstadoCasillero.Libre){

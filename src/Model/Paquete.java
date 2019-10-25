@@ -6,12 +6,27 @@
 package Model;
 
 
+/**
+ * Artículo que es recibido por el counter, tiene un peso, e indica si es electrónico y frájil
+ * */
 public class Paquete extends Entregable {
     private TipoEntrega FormaDeEntregar;
     private boolean isElectronic;
     private boolean isFragile;
     private double peso;
-    
+
+    /**
+     * Constructor de la clase
+     * @param descripcion tipo del entregable
+     * @param entregado un estado que indica si el artículo a sido entregado
+     * @param numReferencia identificacion del artículo
+     * @param precio precio del artículo
+     * @param remitente la persona o compañía que envía el artículo
+     * @param peso peso del artículo en kg
+     * @param formaDeEntrega material que envuelve el artículo de TipoEntrega
+     * @param isElectric indica si el objeto es electrónico
+     * @param isFragile indica si el objeto es frájil
+     * */
     public Paquete(int numReferencia,boolean entregado, TipoEntregable descripcion,String remitente,double precio,TipoEntrega formaDeEntrega, boolean isElectric,boolean isFragile,double peso){
         super(numReferencia,entregado,descripcion,remitente,precio);
         this.FormaDeEntregar=formaDeEntrega;
@@ -27,6 +42,9 @@ public class Paquete extends Entregable {
     }
 
     @Override
+    /**
+     * Calcula el impuesto del artículo
+     * */
     public double calcularImpuesto() {
         double impuestoDolar = peso * 0.02;
         if (isElectronic){
@@ -39,6 +57,10 @@ public class Paquete extends Entregable {
     }
 
     @Override
+    /**
+     * Calcula el precio total con el impuesto y el descuento
+     * @param rango Tipo de rango
+     * */
     public double calcularPrecio(TipoRango rango) {
         return precio - precio*calcularDescuento(rango) + calcularImpuesto();
     }

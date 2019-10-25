@@ -5,7 +5,9 @@
  */
 package Model;
 
-
+/**
+ * Se refiere al material en que está envuelto un Paquete
+ * */
 public enum TipoEntrega {
     caja,bolsa;
 }

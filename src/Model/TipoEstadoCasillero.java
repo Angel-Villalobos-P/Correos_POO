@@ -5,6 +5,9 @@
  */
 package Model;
 
+/**
+ * Se trata del estado del casillero, si este tiene un cliente asignado o no
+ * */
 public enum TipoEstadoCasillero {
     Libre,Ocupado;
 }

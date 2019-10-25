@@ -5,7 +5,9 @@
  */
 package Model;
 
-
+/**
+ * Forma en que el Sobre es mandado al Counter
+ * */
 public enum TipoSobre {
     aereo,manila;
 }
