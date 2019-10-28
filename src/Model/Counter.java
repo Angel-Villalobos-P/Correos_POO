@@ -62,13 +62,13 @@ public class Counter {
      * @return true si se registró exitosamente el cliente, false en los demás casos
      * */
     public boolean registrarCliente(Cliente cliente) {
+	//Revisa si el cliente ya está registrado
+	if (this.checkForClient(cliente.getId()) == true){
+	   return false;
+	}
+
         for (int i = 0; i < registroCasilleros.size(); i++){
-	    
-            
             if (registroCasilleros.get(i).getEstado() == (TipoEstadoCasillero.Libre)) {
-		if(registroCasilleros.get(i).getCliente().getId() == cliente.getId()){
-			return false;
-		}
                 registroCasilleros.get(i).setCliente(cliente);
                 return true;
             }
@@ -134,6 +134,20 @@ public class Counter {
                 ", CedulaJur=" + cedula + 
                 ", descripcion=" + direccion + 
                 ", Cantidad de Casilleros=" + cantidadCasilleros + '}'+"\n"; 
+    }
+
+    public boolean checkForClient(int id){
+	for (int i = 0; i < registroCasilleros.size(); i++){
+	    if (registroCasilleros.get(i).getEstado() == (TipoEstadoCasillero.Libre)) {
+		continue;
+	    }
+
+	    if(registroCasilleros.get(i).getCliente().getId() == id){
+		return true;
+	    }
+	}
+	return false;
+
     }
      
 }
