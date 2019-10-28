@@ -8,6 +8,7 @@ package Model;
 import java.util.ArrayList;
 
 public class Counter {
+    //public static Counter counter;
     private String nombre;
     private String cedula;
     private Direccion direccion;
@@ -22,7 +23,7 @@ public class Counter {
         this.cedula=cedula;
         this.direccion=direccion;
         //this.cantidadCasilleros=cantidadCasilleros;
-        registroCasilleros = new ArrayList<>();
+        this.registroCasilleros = new ArrayList<>();
 
         for (int i=0;i<cantidadCasilleros;i++){
             Casillero casillero = new Casillero(i+1000);
@@ -45,13 +46,21 @@ public class Counter {
     }
 
     public boolean registrarCliente(Cliente cliente) {
+
         for (int i = 0; i < registroCasilleros.size(); i++){
-            if (registroCasilleros.get(i).getCliente().getId() == cliente.getId()) {
+            /*if (registroCasilleros.get(i).getCliente().getId() == cliente.getId()) {
                 return false;
-            }
+            }*/
             if (registroCasilleros.get(i).getEstado() == (TipoEstadoCasillero.Libre)) {
-                registroCasilleros.get(i).setCliente(cliente);
-                return true;
+                if (registroCasilleros.get(i).getCliente() == null){
+                    System.out.println("Sin cliente");
+                    return false;
+                }
+                if(registroCasilleros.get(i).getCliente().getId() == cliente.getId()){
+                    return false;
+                }
+                /*registroCasilleros.get(i).setCliente(cliente);
+                return true;*/
             }
         }
         return false;
@@ -102,5 +111,11 @@ public class Counter {
                 ", descripcion=" + direccion + 
                 ", Cantidad de Casilleros=" + cantidadCasilleros + '}'+"\n"; 
     }
+
+    /*public static Counter getInstance(){
+        if (counter == null)
+            counter = new Counter();
+        return counter;
+    }*/
      
 }

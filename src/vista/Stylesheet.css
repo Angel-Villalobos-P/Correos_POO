@@ -34,4 +34,33 @@
     -fx-font-size: 12pt;
 }
 
+.choice-box{
+    -fx-text-fill: white;
+    -fx-background-color: -fx-primary;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 12pt;
+    -fx-mark-color: white;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 20px;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: #2effda;
+}
+
+.choice-box .menu-item > .label {
+    -fx-text-fill: white;
+}
+
+.choice-box .menu-item:focused > .label {
+    -fx-text-fill: -fx-primary;
+}
+
+.choice-box > .label {
+    -fx-text-fill: white;
+}
 

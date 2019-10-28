@@ -8,20 +8,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="518.0" prefWidth="382.0" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.Counter">
+<!--<?import javafx.scene.control.TextArea.*?>-->
+
+<AnchorPane prefHeight="694.0" prefWidth="344.0" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.Controller">
    <children>
-      <Text layoutX="164.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Counter">
+      <Text layoutX="140.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Counter">
          <font>
             <Font size="23.0" />
          </font></Text>
-      <Label layoutX="119.0" layoutY="80.0" text="Nombre:" />
-      <Label layoutX="119.0" layoutY="167.0" text="Cédula jurídica:" />
-      <Label layoutX="123.0" layoutY="259.0" text="Dirección:" />
-      <Label layoutX="121.0" layoutY="354.0" text="Cantidad de casilleros:" />
-      <TextField layoutX="119.0" layoutY="97.0" />
-      <TextField layoutX="119.0" layoutY="184.0" />
-      <TextArea layoutX="123.0" layoutY="276.0" prefHeight="47.0" prefWidth="161.0" />
-      <TextField layoutX="124.0" layoutY="371.0" />
-      <Button layoutX="150.0" layoutY="456.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="107.0" text="Crear" />
+      <Label layoutX="101.0" layoutY="82.0" text="Nombre:" />
+      <Label layoutX="95.0" layoutY="155.0" text="Cédula jurídica:" />
+      <Label layoutX="92.0" layoutY="228.0" text="Provincia:" />
+      <Label layoutX="100.0" layoutY="555.0" text="Cantidad de casilleros:" />
+      <TextField fx:id="name" layoutX="101.0" layoutY="99.0" />
+      <TextField fx:id="cedula" layoutX="95.0" layoutY="172.0" />
+      <TextArea fx:id="senas" layoutX="101.0" layoutY="477.0" prefHeight="47.0" prefWidth="161.0" />
+      <TextField fx:id="cantidadCasilleros" layoutX="103.0" layoutY="572.0" />
+      <Button fx:id="crear" layoutX="122.0" layoutY="639.0" mnemonicParsing="false" onAction="#crearCounter" prefHeight="27.0" prefWidth="107.0" text="Crear" />
+      <Label layoutX="100.0" layoutY="454.0" text="Señas:" />
+      <TextField fx:id="provincia" layoutX="96.0" layoutY="245.0" />
+      <TextField fx:id="canton" layoutX="95.0" layoutY="328.0" />
+      <TextField fx:id="distrito" layoutX="94.0" layoutY="400.0" />
+      <Label layoutX="94.0" layoutY="305.0" text="Cantón" />
+      <Label layoutX="98.0" layoutY="383.0" text="Distrito:" />
    </children>
 </AnchorPane>

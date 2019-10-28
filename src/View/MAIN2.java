@@ -4,24 +4,10 @@
  * and open the template in the editor.
  */
 package View;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-import Model.Counter;
-import Model.Direccion;
-import Model.Casillero;
-import Model.Cliente;
-import Model.TipoSexo;
-import Model.TipoEntrega;
-import Model.TipoEntregable;
-import Model.Entregable;
-import java.util.Date;
-import Model.Paquete;
-import Model.Sobre;
-import Model.Revista;
-import Model.TipoSobre;
-import Model.TipoTemaRevista;
-import java.util.ArrayList;
 import Controller.Sistema;
+import Model.*;
+
+import java.util.Date;
 
 public class MAIN2 {
     
@@ -80,7 +66,7 @@ public class MAIN2 {
         String remitente="Carlos";
         TipoEntrega formaDeEntrega=TipoEntrega.bolsa;
         double peso=0.5;
-        Paquete PaqueteN= new Paquete(numReferencia,entregado,descripcion,remitente,formaDeEntrega,isElectric,isFragile,peso); 
+        Paquete PaqueteN= new Paquete(numReferencia,entregado,descripcion,remitente, 20,formaDeEntrega,isElectric,isFragile,peso);
         //CREAR CASILLERO//
         Casillero casilleroN=new Casillero(1);
         //ASIGNAR CLIENTE//
@@ -93,7 +79,7 @@ public class MAIN2 {
         String nombreRevi="Revi";
         boolean isCatalogo=true;
         TipoTemaRevista tema=TipoTemaRevista.belleza;
-        Revista RevistaN= new Revista(numReferenciarevi,entregadorevi,descripcionrevi,remitenterevi,nombreRevi,isCatalogo,tema); 
+        Revista RevistaN= new Revista(numReferenciarevi,entregadorevi,descripcionrevi,remitenterevi,20,nombreRevi,isCatalogo,tema);
         //CREAR SOBRE//
         int numReferenciasob=45;
         boolean entregadosob=true;
@@ -102,7 +88,7 @@ public class MAIN2 {
         TipoSobre tiposob = TipoSobre.aereo;
         String contenidosob="Mucho";
         double pesosob = 0.5;
-        Sobre SobreN= new Sobre(numReferenciasob,entregadosob,descripcionsob,remitentesob,tiposob,contenidosob,pesosob); 
+        Sobre SobreN= new Sobre(numReferenciasob,entregadosob,descripcionsob,remitentesob,20, tiposob,contenidosob,pesosob);
         //ASIGNAR PAQUETE - Revista//
         casilleroN.addEntregable(PaqueteN);
         casilleroN.addEntregable(RevistaN);

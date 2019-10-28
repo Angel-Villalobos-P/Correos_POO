@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="529.0" prefWidth="848.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.Controller">
+<AnchorPane prefHeight="529.0" prefWidth="848.0" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.AdminController">
    <children>
       <TabPane prefHeight="529.0" prefWidth="848.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -26,9 +26,9 @@
                               <TableColumn prefWidth="120.0" text="Fecha nacimiento" />
                           </columns>
                         </TableView>
-                        <Button layoutX="24.0" layoutY="43.0" mnemonicParsing="false" text="Agregar" />
+                        <Button fx:id="agregarCliente" layoutX="24.0" layoutY="43.0" mnemonicParsing="false" onAction="#agregarCliente" text="Agregar" />
                         <TextField layoutX="646.0" layoutY="43.0" />
-                        <Button layoutX="583.0" layoutY="43.0" mnemonicParsing="false" text="Buscar" />
+                        <Button layoutX="566.0" layoutY="43.0" mnemonicParsing="false" text="Buscar" />
                      </children></AnchorPane>
             </content>
           </Tab>

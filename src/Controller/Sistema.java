@@ -1,31 +1,28 @@
 
 package Controller;
+
+import Model.Cliente;
 import Model.Counter;
 import Model.Direccion;
-import Model.Casillero;
-import Model.Cliente;
-import Model.TipoSexo;
-import Model.TipoEntrega;
-import Model.TipoEntregable;
-import Model.Entregable;
-import java.util.Scanner;
-import java.util.Date;
-import Model.Paquete;
-import Model.Sobre;
-import Model.Revista;
-import Model.TipoSobre;
-import Model.TipoTemaRevista;
 import util.WebServiceBccr;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Sistema {
     Counter miCounter;
 
+    public static Sistema sistema;
+
     public Sistema() {
         miCounter = null;
+    }
+
+    public static Sistema getInstance(){
+        if (sistema == null)
+            sistema = new Sistema();
+        return sistema;
     }
 
     public boolean crearCounter(String nombre, String cedula, Direccion direccion, int cantidadCasilleros) {
@@ -38,8 +35,7 @@ public class Sistema {
     }
 
     public Direccion crearDireccion(String provincia, String canton, String distrito, String senias) {
-        Direccion direccion = new Direccion(provincia, canton, distrito, senias);
-        return direccion;
+        return new Direccion(provincia, canton, distrito, senias);
     }
 
     private boolean validarNumero(String numero) {
@@ -83,5 +79,17 @@ public class Sistema {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public Counter getMiCounter(){
+        return miCounter;
+    }
+
+    public void test(){
+        System.out.print("Funciona el singleton");
+    }
+
+    public void registrarCliente(Cliente cliente) {
+        miCounter.registrarCliente(cliente);
     }
 }
