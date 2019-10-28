@@ -63,10 +63,12 @@ public class Counter {
      * */
     public boolean registrarCliente(Cliente cliente) {
         for (int i = 0; i < registroCasilleros.size(); i++){
-            if (registroCasilleros.get(i).getCliente().getId() == cliente.getId()) {
-                return false;
-            }
+	    
+            
             if (registroCasilleros.get(i).getEstado() == (TipoEstadoCasillero.Libre)) {
+		if(registroCasilleros.get(i).getCliente().getId() == cliente.getId()){
+			return false;
+		}
                 registroCasilleros.get(i).setCliente(cliente);
                 return true;
             }
@@ -77,6 +79,9 @@ public class Counter {
 
     public boolean modificarCliente(int id,Cliente clienteMod){
         for (int i = 0; i < registroCasilleros.size(); i++){
+	    if (registroCasilleros.get(i).getCliente() == null){
+                continue;
+            }
             if (registroCasilleros.get(i).getCliente().getId() == id) {
                 registroCasilleros.get(i).setCliente(clienteMod);
                 return true;
@@ -93,8 +98,8 @@ public class Counter {
     public Cliente consultarCliente(int id){
         Cliente clienteConsultado = null;
         for (int i = 0; i < registroCasilleros.size(); i++){
-            if (registroCasilleros.get(i).getEstado() == TipoEstadoCasillero.Libre){
-                break;
+            if (registroCasilleros.get(i).getCliente() == null){
+                continue;
             }
             if (registroCasilleros.get(i).getCliente().getId() ==id) {
                 return registroCasilleros.get(i).getCliente();
@@ -110,8 +115,8 @@ public class Counter {
      * */
     public boolean eliminarCliente(int id){
         for (int i = 0; i < registroCasilleros.size(); i++){
-            if (registroCasilleros.get(i).getEstado() == TipoEstadoCasillero.Libre){
-                break;
+            if (registroCasilleros.get(i).getCliente() == null){
+                continue;
             }
             if (registroCasilleros.get(i).getCliente().getId() ==id) {
                 registroCasilleros.get(i).setCliente(null);
