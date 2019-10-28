@@ -1,11 +1,14 @@
 
 package Controller;
 
+import Model.TipoSexo;
 import Model.Cliente;
 import Model.Counter;
 import Model.Direccion;
+import Model.Entregable;
+import Model.Casillero;
 import util.WebServiceBccr;
-
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -100,7 +103,7 @@ public class Sistema {
      * @param cliente cliente que quiere registrarse
      * @return true si se registró exitosamente el cliente, false en los demás casos
      * */
-    public boolean registrarCliente(Cliente cliente){
+    public boolean registrarClienteSiNo(Cliente cliente){
         boolean resultado = miCounter.registrarCliente(cliente);
         return resultado;
     }
@@ -164,5 +167,94 @@ public class Sistema {
 
     public void registrarCliente(Cliente cliente) {
         miCounter.registrarCliente(cliente);
+    }
+    /**
+     * Consulta el casillero por medio del ID del Cliente
+     * @param id tipo String que indica el id del casillero por buscar
+     * @return el casillero encontrado
+     * */
+    public Casillero consultarEstadoCasillero(String id){
+
+        return null;
+    }
+    /**
+     * Consulta el casillero por medio del ID del Casillero
+     * @param numCasillero tipo int que indica el id del casillero por buscar
+     * @return el casillero encontrado
+     * */
+    public Casillero consultarEstadoCasillero(int numCasillero){
+
+        return null;
+    }
+    /**
+     * Consulta los entregables de sin dueño de una fecha especifica
+     * @param fecha tipo Date que indica la fecha de los entregables por buscar
+     * @return el casillero con entregables sin dueño
+     * */
+    public ArrayList<Entregable> consultaEntregableSinDueno(Date fecha){
+        return null;
+    }
+    /**
+     * Consulta los entregables entregados de una fecha especifica
+     * @param fecha tipo Date que indica la fecha de los entregables por buscar
+     * @return el casillero con entregables entregados
+     * */
+    public ArrayList<Entregable> consultaEntregableEntregado(Date fecha){
+        return null;
+    }
+
+    /**
+     * Consulta los entregables de un cliente en especifico
+     * @param id tipo String que indica el cliente a buscarle los entregable
+     * @return su lista de entregables, del dueno
+     * */
+    public ArrayList<Entregable> consultaEntregable(String id){
+        return null;
+    }
+    /**
+     * Retira un articulo de un casillero de un cliente
+     * @param id tipo String que indica el entregable a retirar
+     * @return si se elimino o no el articulo
+     * */
+    public boolean retirarArticulo(String id){
+        return false;
+    }
+    /**
+     * Consulta todos los cliente con articulos pendientes por retirar pendientes
+     * @return Los clientes concatenados en un String
+     * */
+    public String consultarClientesConPendientes(){
+        return "";
+    }
+    /**
+     * Genera un reporte general de la contabilidad de ganancias, impuestos, descuentos y total
+     * @param fecha tipo Date que indica la fecha a generar el reporte
+     * @return el string con todos los datos reportados
+     * */
+    public String generarReporte(Date fecha){
+        return "";
+    }
+    /**
+     * Modifica un Cliente si encuentra el ID de dicho cliente
+     * @param allDatos tipos varios que indican los datos a modificar del cliente
+     * @return el booleano indicando si se pudo modificar el cliente
+     * */
+    public boolean modificarCliente(int id,String nombre,String correo,String telefono,Direccion direccion,Date fecha,TipoSexo sexo){
+        return false;
+    }
+    /**
+     * visualiza todos los clientes
+     * @return el String con todos los clientes concatenados
+     * */
+    public String visualizarClientes(){
+        return "";
+    }
+    /**
+     * Indica entregable por retirar de lista entregableSinEntregar y agrega a lista entregble retirados
+     * @param entregable tipo Entregable que indicando el entregable a retirar de entregables
+     * @return el booleano indicando si se pudo entregar al cliente
+     * */
+    public boolean recivirEntregable(Entregable entregable){
+        return false;
     }
 }
