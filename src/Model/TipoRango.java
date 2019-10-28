@@ -5,6 +5,9 @@
  */
 package Model;
 
+/**
+ * Tipos de rangos disponibles en el counter
+ * */
 public enum TipoRango {
     Normal, Plata, Oro;
 }

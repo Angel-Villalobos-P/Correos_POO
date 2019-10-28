@@ -6,7 +6,7 @@
 package Model;
 
 /**
- *
+ * Tipo de entregables disponibles
  * @author Badilla M
  */
 public enum TipoEntregable {

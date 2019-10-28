@@ -6,12 +6,20 @@
 package Model;
 import java.util.ArrayList;
 
-public class Casillero {
+/**
+ * Se comporta como un contenedor de paquetes y puede estar asignado a un cliente, tiene una identifación
+ * */
+public class Casillero{
     private Cliente cliente;
     private int numCasillero;
     private TipoEstadoCasillero estado;
     private ArrayList<Entregable> registroEntregable;
-    
+
+    /**
+     * Constructor del Casillero, no tiene dueño y no tiene elementos guardados
+     * @param nCasillero id del casillero que se le asignó
+     *
+     * */
     public Casillero(int nCasillero){
         this.numCasillero=nCasillero;
         this.estado=TipoEstadoCasillero.Libre;
@@ -28,9 +36,15 @@ public class Casillero {
         this.cliente=newC;
         this.estado = TipoEstadoCasillero.Ocupado;
     }
+
+    /**
+     * Agrega un paquete al casillero
+     * @param entregable Un artículo recibido de tipo Entregable
+     * */
     public void addEntregable(Entregable entregable){
         registroEntregable.add(entregable);
     }
+
     @Override
     public String toString() {
         return "Casillero{" + "Numero de casillero=" + numCasillero + 
@@ -53,4 +67,6 @@ public class Casillero {
     public ArrayList<Entregable> getRegistroEntregable() {
         return registroEntregable;
     }
+
+
 }

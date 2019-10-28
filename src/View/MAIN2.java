@@ -6,14 +6,14 @@
 package View;
 import Controller.Sistema;
 import Model.*;
+import util.WebServiceBccr;
 
 import java.util.Date;
 
 public class MAIN2 {
     
     //public static ArrayList<Entregable> entregable = new ArrayList<Entregable>();
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws Exception {
         //Sistema sistema=new Sistema();
         //Direccion direccionCounter=null;
         //Counter counter=null;
@@ -66,7 +66,7 @@ public class MAIN2 {
         String remitente="Carlos";
         TipoEntrega formaDeEntrega=TipoEntrega.bolsa;
         double peso=0.5;
-        Paquete PaqueteN= new Paquete(numReferencia,entregado,descripcion,remitente, 20,formaDeEntrega,isElectric,isFragile,peso);
+        Paquete PaqueteN= new Paquete(numReferencia,entregado,descripcion,remitente,20,formaDeEntrega,isElectric,isFragile,peso);
         //CREAR CASILLERO//
         Casillero casilleroN=new Casillero(1);
         //ASIGNAR CLIENTE//
@@ -88,7 +88,7 @@ public class MAIN2 {
         TipoSobre tiposob = TipoSobre.aereo;
         String contenidosob="Mucho";
         double pesosob = 0.5;
-        Sobre SobreN= new Sobre(numReferenciasob,entregadosob,descripcionsob,remitentesob,20, tiposob,contenidosob,pesosob);
+        Sobre SobreN= new Sobre(numReferenciasob,entregadosob,descripcionsob,remitentesob,20,tiposob,contenidosob,pesosob);
         //ASIGNAR PAQUETE - Revista//
         casilleroN.addEntregable(PaqueteN);
         casilleroN.addEntregable(RevistaN);
@@ -108,6 +108,5 @@ public class MAIN2 {
         System.out.println(casilleroN.toString());
         //Imprimir todo el counter//
         System.out.println(CorreoCR.toString());
-    
     }
 }
