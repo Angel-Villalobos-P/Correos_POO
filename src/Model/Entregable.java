@@ -15,8 +15,8 @@ public abstract class Entregable {
     protected TipoEntregable descripcion;
     protected String remitente;
     protected double precio;
-    //protected Date fechaEntregadoCounter;
-    //protected Date fechaEntregadoCliente;
+    protected Date fechaEntregadoCounter;
+    protected Date fechaEntregadoCliente;
 
     /**
      * Constructor de la clase
@@ -26,15 +26,14 @@ public abstract class Entregable {
      * @param precio precio del artículo
      * @param remitente la persona o compañía que envía el artículo
      * */
-    public Entregable(int numReferencia, boolean entregado, TipoEntregable descripcion, String remitente,double precio){
+    public Entregable(int numReferencia, boolean entregado, TipoEntregable descripcion, String remitente,double precio,Date fechaRecibida){
         this.numReferense=numReferencia;
         this.entregado=entregado;
         this.descripcion=descripcion;
         this.remitente=remitente;
         this.precio = precio;
-        //this.fechaEntregadoCounter=fecha;
-        //this.fechaEntregadoCliente=fechaa;
-
+        this.fechaEntregadoCounter=fechaRecibida;
+        this.fechaEntregadoCliente=null;
     }
 
     /**
@@ -73,6 +72,62 @@ public abstract class Entregable {
     }
     protected void setYearEntregadoCounter(Date year){
 
+    }
+
+    protected int getNumReferense() {
+        return numReferense;
+    }
+
+    protected boolean isEntregado() {
+        return entregado;
+    }
+
+    protected TipoEntregable getDescripcion() {
+        return descripcion;
+    }
+
+    protected String getRemitente() {
+        return remitente;
+    }
+
+    protected double getPrecio() {
+        return precio;
+    }
+
+    protected Date getFechaEntregadoCounter() {
+        return fechaEntregadoCounter;
+    }
+
+    protected Date getFechaEntregadoCliente() {
+        return fechaEntregadoCliente;
+    }
+
+    protected void setNumReferense(int numReferense) {
+        this.numReferense = numReferense;
+    }
+
+    protected void setEntregado(boolean entregado) {
+        this.entregado = entregado;
+    }
+
+    protected void setDescripcion(TipoEntregable descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    protected void setRemitente(String remitente) {
+        this.remitente = remitente;
+    }
+
+    protected void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    protected void setFechaEntregadoCounter(Date fechaEntregadoCounter) {
+        this.fechaEntregadoCounter = fechaEntregadoCounter;
+    }
+
+    protected void setFechaEntregadoCliente(Date fechaEntregadoCliente) {
+        this.fechaEntregadoCliente = fechaEntregadoCliente;
     }
 
     /**

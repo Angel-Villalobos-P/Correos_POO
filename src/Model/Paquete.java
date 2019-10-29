@@ -6,6 +6,8 @@
 package Model;
 
 
+import java.util.Date;
+
 /**
  * Artículo que es recibido por el counter, tiene un peso, e indica si es electrónico y frájil
  * */
@@ -26,19 +28,23 @@ public class Paquete extends Entregable {
      * @param formaDeEntrega material que envuelve el artículo de TipoEntrega
      * @param isElectric indica si el objeto es electrónico
      * @param isFragile indica si el objeto es frájil
+     * @param fechaRecibida fecha en que se recibió el paquete
+     *
      * */
-    public Paquete(int numReferencia,boolean entregado, TipoEntregable descripcion,String remitente,double precio,TipoEntrega formaDeEntrega, boolean isElectric,boolean isFragile,double peso){
-        super(numReferencia,entregado,descripcion,remitente,precio);
+    public Paquete(int numReferencia, boolean entregado, TipoEntregable descripcion, String remitente, double precio, TipoEntrega formaDeEntrega, boolean isElectric, boolean isFragile, double peso, Date fechaRecibida){
+        super(numReferencia,entregado,descripcion,remitente,precio,fechaRecibida);
         this.FormaDeEntregar=formaDeEntrega;
         this.isElectronic=isElectric;
+        this.peso = peso;
         this.isFragile=isFragile;
     }
     @Override
     public String toString() {
-        return "Paquete{" + "Tipo de Entrega=" + FormaDeEntregar + 
+        return  super.toStringInicial() +
+                "Paquete{" + "Tipo de Entrega=" + FormaDeEntregar +
                 ", Electronico/no=" + isElectronic + 
                 ", Fragil/no=" + isFragile + 
-                ", Peso=" + peso + "Kg, "; 
+                ", Peso=" + peso + "kg\n";
     }
 
     @Override
@@ -64,6 +70,7 @@ public class Paquete extends Entregable {
     public double calcularPrecio(TipoRango rango) {
         return precio - precio*calcularDescuento(rango) + calcularImpuesto();
     }
+
 
 
 }
