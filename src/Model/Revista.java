@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.Date;
+
 /**
  * Artículo que es recibido por el counter, la revista tiene un nombre, tema, y puede ser un catálogo
  * */
@@ -23,18 +25,20 @@ public class Revista extends Entregable{
      * @param nombre nombre de la revista
      * @param isCatalogo indica si la revista es un catálogo
      * @param tema el tema de la revista
+     * @para
      * */
-    public Revista(int numReferencia,boolean entregado, TipoEntregable descripcion,String remitente,double precio,String nombre,boolean isCatalogo,TipoTemaRevista tema){
-        super(numReferencia,entregado,descripcion,remitente,precio);
+    public Revista(int numReferencia, boolean entregado, TipoEntregable descripcion, String remitente, double precio, String nombre, boolean isCatalogo, TipoTemaRevista tema, Date fechaRecibido){
+        super(numReferencia,entregado,descripcion,remitente,precio,fechaRecibido);
         this.nombre=nombre;
         this.isCatalogo=isCatalogo;
         this.tema=tema;
     }
     @Override
     public String toString() {
-        return "Revista{" + "Nombre=" + nombre + 
+        return super.toStringInicial() +
+                "Revista{" + "Nombre=" + nombre +
                 ", Catalogo/no=" + isCatalogo + 
-                ", Tema de Revista=" + tema + ", ";
+                ", Tema de Revista=" + tema + "\n";
     }
 
 

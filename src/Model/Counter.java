@@ -18,7 +18,7 @@ public class Counter {
     private Direccion direccion;
     private int cantidadCasilleros;
     private ArrayList<Casillero> registroCasilleros;
-    private ArrayList<Entregable> registroEntregablesSinDueño;
+    //private ArrayList<Entregable> registroEntregablesRecibidos;
     private ArrayList<Entregable> registroEntregablesEntregados;
 
     /**
@@ -34,7 +34,7 @@ public class Counter {
         this.direccion=direccion;
         //this.cantidadCasilleros=cantidadCasilleros;
         registroCasilleros = new ArrayList<>();
-        registroEntregablesSinDueño = new ArrayList<>();
+        //registroEntregablesSinDueño = new ArrayList<>();
         registroEntregablesEntregados = new ArrayList<>();
 
         for (int i=0;i<cantidadCasilleros;i++){
@@ -138,6 +138,9 @@ public class Counter {
     public String concatenarClientes(){
         String salida="";
         for(int i=0; i<registroCasilleros.size();i++){
+            if (registroCasilleros.get(i).getCliente() == null){
+                continue;
+            }
             if (registroCasilleros.get(i).getCliente().getId()!=0){
                 salida = salida + registroCasilleros.get(i).getCliente() + " ";
             }
@@ -146,6 +149,9 @@ public class Counter {
     }
     public void registrarArticulo(Entregable entregable,int idCliente){
         for (int i = 0; i < registroCasilleros.size(); i++){
+            if (registroCasilleros.get(i).getCliente() == null){
+                continue;
+            }
             if (registroCasilleros.get(i).getCliente().getId()==idCliente){
                 registroCasilleros.get(i).getRegistroEntregable().add(entregable);
             }
@@ -156,11 +162,14 @@ public class Counter {
 
     /**
      * Elimima un cliente registrado en el counter
-     * @param id identificación del cliente que se quiere eliminar
+     * @param numCliente identificación del cliente que se quiere eliminar
      * @return true si se eliminó exitosamente el cliente, false en los demás casos
      * */
     public boolean estadoCasillero1(int numCliente){    //-------------------------------1
         for (int i = 0; i < registroCasilleros.size(); i++){
+            if (registroCasilleros.get(i).getCliente() == null){
+                continue;
+            }
             if(registroCasilleros.get(i).getCliente().getId()==numCliente) {
                 return true;
             }
@@ -178,6 +187,9 @@ public class Counter {
     public String paquetesPorRetirar(int idCliente){
         String salida="";
         for (int i = 0; i < registroCasilleros.size(); i++){
+            if (registroCasilleros.get(i).getCliente() == null){
+                continue;
+            }
             if (registroCasilleros.get(i).getCliente().getId()==idCliente){
                 for(int p = 0; p < registroCasilleros.get(i).getRegistroEntregable().size(); p++){
                     salida=salida+registroCasilleros.get(i).getRegistroEntregable().get(p).toStringInicial()+ " ";
@@ -186,16 +198,21 @@ public class Counter {
         }
         return salida;
     }
-    public void eliminarEntregable(int numEntregable){
+    public void retirarEntregable(int numEntregable){
         Date fecha= new Date();
         for (int i = 0; i < registroCasilleros.size(); i++){
             for (int p = 0; p < registroCasilleros.get(i).getRegistroEntregable().size(); p++){
                 if(registroCasilleros.get(i).getRegistroEntregable().get(p).getNumReferencia()==numEntregable){
                     registroCasilleros.get(i).getCliente().retirarPaquete(1);
                     registroCasilleros.get(i).getCliente().getRanking();
-                    registroCasilleros.get(i).deleteEntregable(registroCasilleros.get(i).getRegistroEntregable().get(p));
+
                     //setear fecha de recibido al cliente.
+                    registroCasilleros.get(i).getRegistroEntregable().get(p).setFechaEntregadoCliente(fecha);
+
                     registroEntregablesEntregados.add(registroCasilleros.get(i).getRegistroEntregable().get(p));
+
+                    registroCasilleros.get(i).deleteEntregable(registroCasilleros.get(i).getRegistroEntregable().get(p));
+
                 }
             }
         }
@@ -231,5 +248,29 @@ public class Counter {
         }
         return salida;
     }
-     
+
+    public String consultarEntregablesRecibidos(Date fecha){
+        String salida="";
+        for (int i = 0; i<registroCasilleros.size();i++){
+            if(registroCasilleros.get(i).getRegistroEntregable()!=null) {
+                for (int j = 0; j < registroCasilleros.get(i).getRegistroEntregable().size();j++) {
+                    Entregable articulo = registroCasilleros.get(i).getRegistroEntregable().get(j);
+                    if (articulo.getFechaEntregadoCliente().compareTo(fecha) == 0) {
+                        salida += articulo.toString();
+                    }
+                }
+            }
+        }
+        return salida;
+    }
+
+    public String consultarEntregablesEntregados(Date fecha) {
+        String salida = "";
+        for (int i = 0; i<registroEntregablesEntregados.size();i++){
+            if (registroEntregablesEntregados.get(i).getFechaEntregadoCliente().compareTo(fecha) == 0) {
+                salida += registroEntregablesEntregados.get(i).toString();
+            }
+        }
+        return salida;
+    }
 }
