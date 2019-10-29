@@ -44,6 +44,7 @@ public class Casillero{
     public void addEntregable(Entregable entregable){
         registroEntregable.add(entregable);
     }
+    public void deleteEntregable(Entregable entregable) {registroEntregable.remove(entregable);}
 
     @Override
     public String toString() {

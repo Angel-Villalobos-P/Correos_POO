@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Model;
-
+import java.util.Date;
 /**
  * Clase madre de los artículos para entregar
  *
@@ -15,6 +15,8 @@ public abstract class Entregable {
     protected TipoEntregable descripcion;
     protected String remitente;
     protected double precio;
+    //protected Date fechaEntregadoCounter;
+    //protected Date fechaEntregadoCliente;
 
     /**
      * Constructor de la clase
@@ -30,6 +32,9 @@ public abstract class Entregable {
         this.descripcion=descripcion;
         this.remitente=remitente;
         this.precio = precio;
+        //this.fechaEntregadoCounter=fecha;
+        //this.fechaEntregadoCliente=fechaa;
+
     }
 
     /**
@@ -44,7 +49,9 @@ public abstract class Entregable {
                 ", Desclipcion=" + descripcion +
                 ", Remitente=" + remitente + '}'+"\n"; 
     }
-
+    public int getNumReferencia(){
+        return numReferense;
+    }
     /**
      * Calcula el descuento dependiendo del rango del cliente receptor
      * @param rango Tipo de rango
@@ -57,6 +64,15 @@ public abstract class Entregable {
             return 0.10;
         }
         return 0;
+    }
+    protected void setDayEntregadoCounter(Date dia){
+
+    }
+    protected void setMesEntregadoCounter(Date mes){
+
+    }
+    protected void setYearEntregadoCounter(Date year){
+
     }
 
     /**

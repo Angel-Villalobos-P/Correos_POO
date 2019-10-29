@@ -103,11 +103,27 @@ public class Sistema {
      * @param cliente cliente que quiere registrarse
      * @return true si se registró exitosamente el cliente, false en los demás casos
      * */
+    public void registrarCliente(Cliente cliente) {
+        miCounter.registrarCliente(cliente);
+    }
     public boolean registrarClienteSiNo(Cliente cliente){
         boolean resultado = miCounter.registrarCliente(cliente);
         return resultado;
     }
-
+    /**
+     * Modifica un Cliente si encuentra el ID de dicho cliente
+     * @param allDatos tipos varios que indican los datos a modificar del cliente
+     * @return el booleano indicando si se pudo modificar el cliente
+     * */
+    public String modificarCliente(int id,String nombre,String correo,String telefono,Direccion direccion,Date fecha,TipoSexo sexo){
+        Cliente cliente = new Cliente(id, nombre, correo, telefono, direccion, fecha, sexo);
+        if (miCounter.modificarCliente(id, cliente)) {
+            miCounter.modificarClienteVoid(id, cliente);
+            return "listo";
+        } else {
+            return "No se pudo";
+        }
+    }
     /**
      * Consulta un cliente registrado en el counter
      * @param id identificación del cliente que se quiere buscar
@@ -123,9 +139,65 @@ public class Sistema {
      * @return true si se eliminó exitosamente el cliente, false en los demás casos
      * */
     public boolean eliminarCliente(String id){
+
         return miCounter.eliminarCliente(Integer.parseInt(id));
     }
+    public String VerClientesRegistrados(){
+        String salida="";
+        //salida=miCounter.
+        return salida;
+    }
+    public String registrarArticulo(Entregable entregable,int idCliente){
+        miCounter.registrarArticulo(entregable,idCliente);
+        return "listo";
+    }
+    /**
+     * Retira un articulo de un casillero de un cliente
+     * @param id tipo String que indica el entregable a retirar
+     * @return si se elimino o no el articulo
+     * */
+    public String retirarArticulo(int id){
+        miCounter.eliminarEntregable(id);
+        return "listo";
+    }
 
+    public Counter getMiCounter(){
+        return miCounter;
+    }
+
+    public void test(){
+        System.out.print("Funciona el singleton");
+    }
+
+    /////////////////////////////Consultas
+
+    /**
+     * Consulta el casillero por medio del ID del Cliente
+     * @param id tipo String que indica el id del casillero por buscar
+     * @return el casillero encontrado
+     * */
+    public String consultarEstadoCasillero1(int idCliente){
+        if (miCounter.estadoCasillero1(idCliente)==true) {return "Ocupado";}
+        else{return "libre";}
+    }
+    /**
+     * Consulta el casillero por medio del ID del Casillero
+     * @param numCasillero tipo int que indica el id del casillero por buscar
+     * @return el casillero encontrado
+     * */
+    public String consultarEstadoCasillero(int numCasillero){
+        if (miCounter.estadoCasillero2(numCasillero)==true) {return "Ocupado";}
+        else{return "Libre";}
+    }
+    /**
+     * Consulta los entregables de un cliente en especifico
+     * @param id tipo String que indica el cliente a buscarle los entregable
+     * @return su lista de entregables, del dueno
+     * */
+    public String consultaPendientesRetirarDeUnCliente(int id){             ///////////////////4
+        String salida = miCounter.paquetesPorRetirar(id);
+        return salida;
+    }
     /**
      * Consulta el tipo de cambio del BCCR de un día dado
      * @param fecha Objeto Date que indica la fecha deseada
@@ -147,7 +219,7 @@ public class Sistema {
      * @param fecha Objeto Date que indica la fecha deseada
      * @return valor de la venta de dolar
      * */
-    public String consultarVenta(Date fecha) {
+    public String consultarVenta(Date fecha) {              ////////7
         WebServiceBccr servicio = new WebServiceBccr();
         try {
             return Double.toString(servicio.getCambioVenta(fecha));
@@ -156,75 +228,10 @@ public class Sistema {
         }
         return "";
     }
-
-    public Counter getMiCounter(){
-        return miCounter;
-    }
-
-    public void test(){
-        System.out.print("Funciona el singleton");
-    }
-
-    public void registrarCliente(Cliente cliente) {
-        miCounter.registrarCliente(cliente);
-    }
-    /**
-     * Consulta el casillero por medio del ID del Cliente
-     * @param id tipo String que indica el id del casillero por buscar
-     * @return el casillero encontrado
-     * */
-    public Casillero consultarEstadoCasillero(String id){
-
-        return null;
-    }
-    /**
-     * Consulta el casillero por medio del ID del Casillero
-     * @param numCasillero tipo int que indica el id del casillero por buscar
-     * @return el casillero encontrado
-     * */
-    public Casillero consultarEstadoCasillero(int numCasillero){
-
-        return null;
-    }
-    /**
-     * Consulta los entregables de sin dueño de una fecha especifica
-     * @param fecha tipo Date que indica la fecha de los entregables por buscar
-     * @return el casillero con entregables sin dueño
-     * */
-    public ArrayList<Entregable> consultaEntregableSinDueno(Date fecha){
-        return null;
-    }
-    /**
-     * Consulta los entregables entregados de una fecha especifica
-     * @param fecha tipo Date que indica la fecha de los entregables por buscar
-     * @return el casillero con entregables entregados
-     * */
-    public ArrayList<Entregable> consultaEntregableEntregado(Date fecha){
-        return null;
-    }
-
-    /**
-     * Consulta los entregables de un cliente en especifico
-     * @param id tipo String que indica el cliente a buscarle los entregable
-     * @return su lista de entregables, del dueno
-     * */
-    public ArrayList<Entregable> consultaEntregable(String id){
-        return null;
-    }
-    /**
-     * Retira un articulo de un casillero de un cliente
-     * @param id tipo String que indica el entregable a retirar
-     * @return si se elimino o no el articulo
-     * */
-    public boolean retirarArticulo(String id){
-        return false;
-    }
-    /**
-     * Consulta todos los cliente con articulos pendientes por retirar pendientes
-     * @return Los clientes concatenados en un String
-     * */
-    public String consultarClientesConPendientes(){
-        return "";
+    public String ListadoDeClientesConPaquetesPendientes(){
+        String salida="";
+        salida=miCounter.listadoClientesPaquetePendiente();
+        return salida;
     }
     /**
      * Genera un reporte general de la contabilidad de ganancias, impuestos, descuentos y total
@@ -234,27 +241,47 @@ public class Sistema {
     public String generarReporte(Date fecha){
         return "";
     }
+
+    ////////No se que son
+
     /**
-     * Modifica un Cliente si encuentra el ID de dicho cliente
-     * @param allDatos tipos varios que indican los datos a modificar del cliente
-     * @return el booleano indicando si se pudo modificar el cliente
+     * Consulta los entregables de sin dueño de una fecha especifica
+     * @param fecha tipo Date que indica la fecha de los entregables por buscar
+     * @return el casillero con entregables sin dueño
      * */
-    public boolean modificarCliente(int id,String nombre,String correo,String telefono,Direccion direccion,Date fecha,TipoSexo sexo){
-        return false;
+    public String consultaEntregableRecibido(Date fecha){
+        return null;
     }
+
+    /**
+     * Consulta los entregables entregados de una fecha especifica
+     * @param fecha tipo Date que indica la fecha de los entregables por buscar
+     * @return el casillero con entregables entregados
+     * */
+    public String consultaEntregableEntregado(Date fecha){
+
+        return "";
+    }
+
+
+    /**
+     * Consulta todos los cliente con articulos pendientes por retirar pendientes
+     * @return Los clientes concatenados en un String
+     * */
+    public String consultarClientesConPendientes(){
+        return "";
+    }
+
+
     /**
      * visualiza todos los clientes
      * @return el String con todos los clientes concatenados
      * */
     public String visualizarClientes(){
-        return "";
+        String salida;
+        salida = miCounter.concatenarClientes();
+        return salida;
     }
-    /**
-     * Indica entregable por retirar de lista entregableSinEntregar y agrega a lista entregble retirados
-     * @param entregable tipo Entregable que indicando el entregable a retirar de entregables
-     * @return el booleano indicando si se pudo entregar al cliente
-     * */
-    public boolean recivirEntregable(Entregable entregable){
-        return false;
-    }
+
+
 }

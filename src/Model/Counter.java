@@ -6,7 +6,7 @@
 package Model;
 
 import java.util.ArrayList;
-
+import java.util.Date;
 
 /**
  * El Counter contiene los casilleros que van a ser creados vacíos. Va a recibir artículos y es capaz de almacenar estos mismos.
@@ -83,11 +83,9 @@ public class Counter {
         }
         return false;
     }
-
-
     public boolean modificarCliente(int id,Cliente clienteMod){
         for (int i = 0; i < registroCasilleros.size(); i++){
-	    if (registroCasilleros.get(i).getCliente() == null){
+            if (registroCasilleros.get(i).getCliente() == null){
                 continue;
             }
             if (registroCasilleros.get(i).getCliente().getId() == id) {
@@ -97,7 +95,16 @@ public class Counter {
         }
         return false;
     }
-
+    public void modificarClienteVoid(int id,Cliente clienteMod){
+        for (int i = 0; i < registroCasilleros.size(); i++){
+            if (registroCasilleros.get(i).getCliente() == null){
+                continue;
+            }
+            if (registroCasilleros.get(i).getCliente().getId() == id) {
+                registroCasilleros.get(i).setCliente(clienteMod);
+            }
+        }
+    }
     /**
      * Consulta un cliente registrado en el counter
      * @param id identificación del cliente que se quiere buscar
@@ -115,12 +122,6 @@ public class Counter {
         }
         return clienteConsultado;
     }
-
-    /**
-     * Elimima un cliente registrado en el counter
-     * @param id identificación del cliente que se quiere eliminar
-     * @return true si se eliminó exitosamente el cliente, false en los demás casos
-     * */
     public boolean eliminarCliente(int id){
         for (int i = 0; i < registroCasilleros.size(); i++){
             if (registroCasilleros.get(i).getCliente() == null){
@@ -134,7 +135,71 @@ public class Counter {
         }
         return false;
     }
+    public String concatenarClientes(){
+        String salida="";
+        for(int i=0; i<registroCasilleros.size();i++){
+            if (registroCasilleros.get(i).getCliente().getId()!=0){
+                salida = salida + registroCasilleros.get(i).getCliente() + " ";
+            }
+        }
+        return salida;
+    }
+    public void registrarArticulo(Entregable entregable,int idCliente){
+        for (int i = 0; i < registroCasilleros.size(); i++){
+            if (registroCasilleros.get(i).getCliente().getId()==idCliente){
+                registroCasilleros.get(i).getRegistroEntregable().add(entregable);
+            }
+        }
+    }
 
+
+
+    /**
+     * Elimima un cliente registrado en el counter
+     * @param id identificación del cliente que se quiere eliminar
+     * @return true si se eliminó exitosamente el cliente, false en los demás casos
+     * */
+    public boolean estadoCasillero1(int numCliente){    //-------------------------------1
+        for (int i = 0; i < registroCasilleros.size(); i++){
+            if(registroCasilleros.get(i).getCliente().getId()==numCliente) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean estadoCasillero2(int idCasillero){   //--------------------------------2
+        for (int i = 0; i < registroCasilleros.size(); i++){
+            if(registroCasilleros.get(i).getNumCasillero()==idCasillero) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public String paquetesPorRetirar(int idCliente){
+        String salida="";
+        for (int i = 0; i < registroCasilleros.size(); i++){
+            if (registroCasilleros.get(i).getCliente().getId()==idCliente){
+                for(int p = 0; p < registroCasilleros.get(i).getRegistroEntregable().size(); p++){
+                    salida=salida+registroCasilleros.get(i).getRegistroEntregable().get(p).toStringInicial()+ " ";
+                }
+            }
+        }
+        return salida;
+    }
+    public void eliminarEntregable(int numEntregable){
+        Date fecha= new Date();
+        for (int i = 0; i < registroCasilleros.size(); i++){
+            for (int p = 0; p < registroCasilleros.get(i).getRegistroEntregable().size(); p++){
+                if(registroCasilleros.get(i).getRegistroEntregable().get(p).getNumReferencia()==numEntregable){
+                    registroCasilleros.get(i).getCliente().retirarPaquete(1);
+                    registroCasilleros.get(i).getCliente().getRanking();
+                    registroCasilleros.get(i).deleteEntregable(registroCasilleros.get(i).getRegistroEntregable().get(p));
+                    //setear fecha de recibido al cliente.
+                    registroEntregablesEntregados.add(registroCasilleros.get(i).getRegistroEntregable().get(p));
+                }
+            }
+        }
+    }
 
     @Override
     public String toString() {
@@ -145,17 +210,26 @@ public class Counter {
     }
 
     public boolean checkForClient(int id){
-	for (int i = 0; i < registroCasilleros.size(); i++){
-	    if (registroCasilleros.get(i).getEstado() == (TipoEstadoCasillero.Libre)) {
-		continue;
+	    for (int i = 0; i < registroCasilleros.size(); i++){
+	        if (registroCasilleros.get(i).getEstado() == (TipoEstadoCasillero.Libre)) {
+		    continue;
+	        }
+            if(registroCasilleros.get(i).getCliente().getId() == id){
+		    return true;
+	        }
 	    }
-
-	    if(registroCasilleros.get(i).getCliente().getId() == id){
-		return true;
-	    }
-	}
-	return false;
-
+	    return false;
+    }
+    public String listadoClientesPaquetePendiente(){
+        String salida="";
+        for (int i = 0; i < registroCasilleros.size(); i++){
+            if(registroCasilleros.get(i).getRegistroEntregable()!=null) {
+                for (int p = 0; p < registroCasilleros.get(i).getRegistroEntregable().size(); p++) {
+                    salida = salida + registroCasilleros.get(i).getCliente().toString() + " = " + p + " ";
+                }
+            }
+        }
+        return salida;
     }
      
 }
