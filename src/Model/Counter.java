@@ -5,6 +5,8 @@
  */
 package Model;
 
+import util.GeneradorDeCorreo;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -154,6 +156,10 @@ public class Counter {
             }
             if (registroCasilleros.get(i).getCliente().getId()==idCliente){
                 registroCasilleros.get(i).getRegistroEntregable().add(entregable);
+                GeneradorDeCorreo genCorreo = new GeneradorDeCorreo();
+                genCorreo.mandarCorreo(registroCasilleros.get(i).getCliente().getCorreo(),"Estimado usuario(a):\n      A usted le llegó un paquete a su casillero. Por favor venga a la"
+                        + " sucursal y retire su paquete.\n\nGracias por elegirnos.");
+
             }
         }
     }
@@ -191,13 +197,21 @@ public class Counter {
                 continue;
             }
             if (registroCasilleros.get(i).getCliente().getId()==idCliente){
-                for(int p = 0; p < registroCasilleros.get(i).getRegistroEntregable().size(); p++){
-                    salida=salida+registroCasilleros.get(i).getRegistroEntregable().get(p).toStringInicial()+ " ";
+                for(int p = 0; p < registroCasilleros.get(i).getRegistroEntregable().size(); p++) {
+                    salida = salida + registroCasilleros.get(i).getRegistroEntregable().get(p).toStringInicial() + " ";
                 }
             }
         }
         return salida;
     }
+
+
+    public void enviarCorreoPendientes(String correo){
+        GeneradorDeCorreo genCorreo = new GeneradorDeCorreo();
+        genCorreo.mandarCorreo(correo,"Estimado usuario(a):\n      Tiene varios paquetes sin retirar. Por favor venga a la"
+                + " sucursal y retire su paquete.\n\nGracias por elegirnos.");
+    }
+
     public void retirarEntregable(int numEntregable){
         Date fecha= new Date();
         for (int i = 0; i < registroCasilleros.size(); i++){
@@ -272,5 +286,29 @@ public class Counter {
             }
         }
         return salida;
+    }
+
+    public String generarReporte(Date fechaConsulta){
+
+        double ganancia= 0;
+        double costoImpuestos= 0;
+        double costoTotal= 0;
+        double costoDescuentos = 0;
+        for (int i = 0;i < registroEntregablesEntregados.size();i++){
+            Entregable articulo = registroEntregablesEntregados.get(i);
+
+            costoImpuestos += articulo.calcularImpuesto();
+            costoDescuentos += articulo.getDescuento();
+            double costoFinalTemp = articulo.getPrecio() + articulo.calcularImpuesto() -articulo.getDescuento();
+            costoTotal += costoFinalTemp;
+            ganancia += costoFinalTemp - articulo.calcularImpuesto() -articulo.getDescuento();
+        }
+        String reporte = "Reporte Dia" + fechaConsulta.toString() + "\n";
+        reporte += "Costo de impuestos: " + costoImpuestos + "\n" +
+                   "Costo de descuentos: " + costoDescuentos + "\n" +
+                   "Costo Total: " + costoTotal + "\n" +
+                   "Ganancias = " + ganancia + "\n";
+
+        return reporte;
     }
 }

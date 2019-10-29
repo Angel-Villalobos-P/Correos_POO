@@ -23,7 +23,7 @@ public class GeneradorDeCorreo {
    * @param   pDestinatario   correo del destinatario
    * 
    */
-  public void mandarCorreo(String pDestinatario) {
+  public void mandarCorreo(String pDestinatario,String mensaje) {
     //Definicion de datos del correo del remitente
     String correoRemitente = "pooproyecto4@gmail.com";
     String claveCorreo = "qwerty!#$%";
@@ -57,8 +57,7 @@ public class GeneradorDeCorreo {
 
       // Creacion del cuerpo del correo
       MimeBodyPart mimeBodyPart = new MimeBodyPart();
-      mimeBodyPart.setText("Estimado usuario(a):\n      A usted le llegó un paquete a su casillero. Por favor venga a la"
-                            + " sucursal y retire su paquete.\n\nGracias por elegirnos." );
+      mimeBodyPart.setText(mensaje);
 
       // Creacion del multipart para agregar el mensaje anterior
       Multipart multipart = new MimeMultipart();

@@ -17,6 +17,7 @@ public abstract class Entregable {
     protected double precio;
     protected Date fechaEntregadoCounter;
     protected Date fechaEntregadoCliente;
+    protected double descuento;
 
     /**
      * Constructor de la clase
@@ -34,6 +35,7 @@ public abstract class Entregable {
         this.precio = precio;
         this.fechaEntregadoCounter=fechaRecibida;
         this.fechaEntregadoCliente=null;
+        this.descuento = 0;
     }
 
     /**
@@ -55,14 +57,13 @@ public abstract class Entregable {
      * Calcula el descuento dependiendo del rango del cliente receptor
      * @param rango Tipo de rango
      * */
-    protected double calcularDescuento(TipoRango rango){
+    protected void calcularDescuento(TipoRango rango){
         if (rango == TipoRango.Plata) {
-            return 0.05;
+            descuento =  0.05;
         }
         if (rango == TipoRango.Oro) {
-            return 0.10;
+            descuento =  0.10;
         }
-        return 0;
     }
     protected void setDayEntregadoCounter(Date dia){
 
@@ -135,5 +136,13 @@ public abstract class Entregable {
      * @param rango Tipo de rango
      * */
     public abstract double calcularPrecio(TipoRango rango);
+
+    protected double getDescuento() {
+        return descuento;
+    }
+
+    protected void setDescuento(double descuento) {
+         this.descuento = descuento;
+    }
 }
 

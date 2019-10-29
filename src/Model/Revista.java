@@ -53,10 +53,14 @@ public class Revista extends Entregable{
     @Override
     /**
      * Calcula el precio total con el impuesto y el descuento
-     * @param rango Tipo de rango
      * */
     public double calcularPrecio(TipoRango rango) {
-        return precio - precio*calcularDescuento(rango) + calcularImpuesto();
+        calcularDescuento(rango);
+        return precio - precio*descuento + calcularImpuesto();
     }
+
+
+
+
 
 }
