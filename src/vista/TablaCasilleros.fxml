@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="529.0" prefWidth="850.0" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.AdminController">
+   <children>
+      <TabPane prefHeight="529.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Administración de casilleros">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="723.0">
+                     <children>
+                        <TableView fx:id="tabla" layoutY="149.0" prefHeight="353.0" prefWidth="850.0" tableMenuButtonVisible="true">
+                          <columns>
+                            <TableColumn fx:id="clienteName" onEditStart="#registrarCliente" prefWidth="120.0" text="Cliente" />
+                            <TableColumn fx:id="numeroCasillero" onEditStart="#eliminarCiente" prefWidth="120.0" text="No. Casillero" />
+                              <TableColumn fx:id="estadoCasillero" prefWidth="120.0" text="Estado" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="agregarCliente" layoutX="24.0" layoutY="43.0" mnemonicParsing="false" onAction="#registrarClienteButton" text="Registrar Cliente" />
+                        <TextField fx:id="buscar" layoutX="633.0" layoutY="43.0" />
+                        <Button layoutX="553.0" layoutY="43.0" mnemonicParsing="false" text="Buscar" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Recepción de artículos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="Retiro de artículos">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="570.0" />
+               </content>
+            </Tab>
+            <Tab text="Clientes">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="570.0">
+                     <children>
+                        <TableView fx:id="tablaClientes" layoutY="176.0" prefHeight="321.0" prefWidth="850.0" tableMenuButtonVisible="true">
+                          <columns>
+                            <TableColumn fx:id="clienteNombre" prefWidth="75.0" text="Nombre" />
+                            <TableColumn fx:id="clienteCedula" prefWidth="75.0" text="Cédula" />
+                              <TableColumn fx:id="clienteTelefono" prefWidth="75.0" text="Teléfono" />
+                              <TableColumn fx:id="clienteCorreo" prefWidth="75.0" text="Correo" />
+                              <TableColumn fx:id="clienteFechaNac" prefWidth="75.0" text="Fech. Nac" />
+                              <TableColumn fx:id="clienteRango" prefWidth="75.0" text="Rango" />
+                              <TableColumn fx:id="clienteSexo" prefWidth="75.0" text="Sexo" />
+                              <TableColumn fx:id="clientePaqRetirados" prefWidth="86.0" text="Paq. retirados" />
+                              <TableColumn fx:id="clienteDireccion" prefWidth="64.0" text="Dirección" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="buscarCliente" layoutX="662.0" layoutY="45.0" />
+                        <Label layoutX="576.0" layoutY="62.0" text="Buscar">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="41.0" layoutY="68.0" text="Clientes">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

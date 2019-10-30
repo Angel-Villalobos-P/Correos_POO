@@ -15,10 +15,10 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="363.0" prefWidth="585.0">
                      <children>
-                        <TableView layoutY="149.0" prefHeight="353.0" prefWidth="848.0" tableMenuButtonVisible="true">
+                        <TableView fx:id="tabla" layoutY="149.0" prefHeight="353.0" prefWidth="848.0" tableMenuButtonVisible="true">
                           <columns>
-                            <TableColumn prefWidth="120.0" text="ID" />
-                            <TableColumn prefWidth="120.0" text="Nombre" />
+                            <TableColumn fx:id="ID" onEditCancel="#registrarCliente" onEditCommit="#registrarCliente" onEditStart="#registrarCliente" prefWidth="120.0" text="ID" />
+                            <TableColumn fx:id="nombre" prefWidth="120.0" text="Nombre" />
                               <TableColumn prefWidth="120.0" text="Correo" />
                               <TableColumn prefWidth="120.0" text="Dirección" />
                               <TableColumn prefWidth="120.0" text="Teléfono" />
@@ -26,7 +26,7 @@
                               <TableColumn prefWidth="120.0" text="Fecha nacimiento" />
                           </columns>
                         </TableView>
-                        <Button fx:id="agregarCliente" layoutX="24.0" layoutY="43.0" mnemonicParsing="false" onAction="#agregarCliente" text="Agregar" />
+                        <Button fx:id="agregarCliente" layoutX="24.0" layoutY="43.0" mnemonicParsing="false" onAction="#registrarCliente" text="Agregar" />
                         <TextField layoutX="646.0" layoutY="43.0" />
                         <Button layoutX="566.0" layoutY="43.0" mnemonicParsing="false" text="Buscar" />
                      </children></AnchorPane>

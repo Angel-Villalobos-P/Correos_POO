@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package Model;
+
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.ArrayList;
 
 /**
@@ -14,6 +17,12 @@ public class Casillero{
     private int numCasillero;
     private TipoEstadoCasillero estado;
     private ArrayList<Entregable> registroEntregable;
+    private SimpleStringProperty noAsignado = new SimpleStringProperty("No asignado");
+
+    public String getNoAsignado() {
+        return noAsignado.get();
+    }
+
 
     /**
      * Constructor del Casillero, no tiene dueño y no tiene elementos guardados
@@ -32,9 +41,11 @@ public class Casillero{
     public void setNumeroCasillero(int nCasillero){
         this.numCasillero=nCasillero;
     }
+
     public void setCliente(Cliente newC){
         this.cliente=newC;
-        this.estado = TipoEstadoCasillero.Ocupado;
+        this.estado = TipoEstadoCasillero.Ocupado; //(newC == null ? TipoEstadoCasillero.Libre : TipoEstadoCasillero.Ocupado);
+        noAsignado = (newC != null ? new SimpleStringProperty(cliente.getNombre()) : new SimpleStringProperty("No asignado"));
     }
 
     /**
@@ -67,6 +78,5 @@ public class Casillero{
     public ArrayList<Entregable> getRegistroEntregable() {
         return registroEntregable;
     }
-
 
 }

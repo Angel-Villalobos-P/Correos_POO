@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Model;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.Date;
 
 /**
@@ -19,6 +21,26 @@ public class Cliente{
     private TipoRango tipo;
     private TipoSexo sexo;
     private int PaquetesRetirados;
+    private SimpleStringProperty fechaNac;
+    private SimpleStringProperty direcc;
+
+    public String getFechaNac() {
+        return fechaNac.get();
+    }
+
+    public SimpleStringProperty fechaNacProperty() {
+        return fechaNac;
+    }
+
+
+    public String getDirecc() {
+        return direcc.get();
+    }
+
+    public SimpleStringProperty direccProperty() {
+        return direcc;
+    }
+
 
     /**
      * Construye el objeto cliente
@@ -40,6 +62,8 @@ public class Cliente{
         this.tipo=TipoRango.Normal;
         this.sexo=sexo;
         this.PaquetesRetirados=0;
+        this.direcc = new SimpleStringProperty(this.direccion.getSenias());
+        this.fechaNac = new SimpleStringProperty(this.fechaNacimiento.toString());
     }
     
     @Override

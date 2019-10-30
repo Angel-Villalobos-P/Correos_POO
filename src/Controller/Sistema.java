@@ -17,15 +17,21 @@ import java.util.regex.Pattern;
 public class Sistema {
     Counter miCounter;
 
+    //Singleton
+    public static Sistema sistema;
     /**
      * Constructor que inicializa el objeto
      * */
-    public static Sistema sistema;
 
     public Sistema() {
         miCounter = null;
     }
 
+    public static Sistema getInstance(){
+        if (sistema == null)
+            sistema = new Sistema();
+        return sistema;
+    }
     /**
      *
      * Crea el counter
@@ -35,11 +41,6 @@ public class Sistema {
      * @param cantidadCasilleros Cantidad de casilleros que tendrá el counter
      * @return true si se logró crear el counter, false si ya se creó el counter anteriormente
      * */
-    public static Sistema getInstance(){
-        if (sistema == null)
-            sistema = new Sistema();
-        return sistema;
-    }
 
     public boolean crearCounter(String nombre, String cedula, Direccion direccion, int cantidadCasilleros) {
         if (miCounter == null) {
@@ -101,8 +102,7 @@ public class Sistema {
      * @return true si se registró exitosamente el cliente, false en los demás casos
      * */
     public boolean registrarCliente(Cliente cliente){
-        boolean resultado = miCounter.registrarCliente(cliente);
-        return resultado;
+        return miCounter.registrarCliente(cliente);
     }
 
     /**
@@ -158,11 +158,9 @@ public class Sistema {
         return miCounter;
     }
 
+    //Eliminar this
     public void test(){
         System.out.print("Funciona el singleton");
     }
 
-    public void registrarCliente(Cliente cliente) {
-        miCounter.registrarCliente(cliente);
-    }
 }

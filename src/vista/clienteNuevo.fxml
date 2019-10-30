@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -23,9 +20,6 @@
       <Label layoutX="274.0" layoutY="119.0" text="Cantón:" />
       <Label layoutX="274.0" layoutY="176.0" text="Distrito:" />
       <Label layoutX="270.0" layoutY="234.0" text="Señas:" />
-      <Label layoutX="285.0" layoutY="364.0" text="Día:" />
-      <Label layoutX="395.0" layoutY="364.0" text="Año:" />
-      <Label layoutX="335.0" layoutY="364.0" text="Mes:" />
       <Label layoutX="273.0" layoutY="293.0" text="Sexo:" />
       <TextField fx:id="cedula" layoutX="38.0" layoutY="80.0" />
       <TextField fx:id="nombre" layoutX="38.0" layoutY="136.0" />
@@ -40,13 +34,10 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="dia" layoutX="285.0" layoutY="382.0" prefHeight="17.0" prefWidth="38.0" />
-      <TextField fx:id="mes" layoutX="335.0" layoutY="382.0" prefHeight="17.0" prefWidth="38.0" />
-      <TextField fx:id="year" layoutX="389.0" layoutY="382.0" prefHeight="17.0" prefWidth="38.0" />
       <Button fx:id="aceptar" layoutX="212.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleButton" text="Aceptar" />
       <ChoiceBox fx:id="tipo" layoutX="36.0" layoutY="321.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="sexo" layoutX="273.0" layoutY="321.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="sexo" layoutX="273.0" layoutY="321.0" prefHeight="32.0" prefWidth="161.0" />
       <Separator layoutX="233.0" layoutY="63.0" orientation="VERTICAL" prefHeight="297.0" prefWidth="4.0" />
-      <DatePicker fx:id="datePicker" layoutX="25.0" layoutY="409.0" />
+      <DatePicker fx:id="datePicker" layoutX="270.0" layoutY="378.0" prefHeight="27.0" prefWidth="174.0" />
    </children>
 </AnchorPane>

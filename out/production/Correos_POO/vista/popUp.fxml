@@ -10,5 +10,6 @@
 <AnchorPane prefHeight="119.0" prefWidth="269.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.Controller">
    <children>
       <Text layoutX="86.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Counter creado" />
+      <Button layoutX="107.0" layoutY="71.0" mnemonicParsing="false" text="Aceptar" />
    </children>
 </AnchorPane>

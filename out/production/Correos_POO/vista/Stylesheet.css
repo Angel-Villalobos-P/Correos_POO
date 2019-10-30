@@ -64,3 +64,9 @@
     -fx-text-fill: white;
 }
 
+#tabla .table-column {
+    -fx-alignment: CENTER;
+}
+#tablaClientes .table-column {
+    -fx-alignment: CENTER;
+}
