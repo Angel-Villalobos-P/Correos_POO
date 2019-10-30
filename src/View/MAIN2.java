@@ -66,7 +66,7 @@ public class MAIN2 {
         String remitente="Carlos";
         TipoEntrega formaDeEntrega=TipoEntrega.bolsa;
         double peso=0.5;
-        Paquete PaqueteN= new Paquete(numReferencia,entregado,descripcion,remitente,20,formaDeEntrega,isElectric,isFragile,peso);
+        Paquete PaqueteN= new Paquete(numReferencia,entregado,descripcion,remitente,20,formaDeEntrega,isElectric,isFragile,peso,fecha);
         //CREAR CASILLERO//
         Casillero casilleroN=new Casillero(1);
         //ASIGNAR CLIENTE//
@@ -79,7 +79,7 @@ public class MAIN2 {
         String nombreRevi="Revi";
         boolean isCatalogo=true;
         TipoTemaRevista tema=TipoTemaRevista.belleza;
-        Revista RevistaN= new Revista(numReferenciarevi,entregadorevi,descripcionrevi,remitenterevi,20,nombreRevi,isCatalogo,tema);
+        Revista RevistaN= new Revista(numReferenciarevi,entregadorevi,descripcionrevi,remitenterevi,20,nombreRevi,isCatalogo,tema,fecha);
         //CREAR SOBRE//
         int numReferenciasob=45;
         boolean entregadosob=true;
@@ -88,7 +88,7 @@ public class MAIN2 {
         TipoSobre tiposob = TipoSobre.aereo;
         String contenidosob="Mucho";
         double pesosob = 0.5;
-        Sobre SobreN= new Sobre(numReferenciasob,entregadosob,descripcionsob,remitentesob,20,tiposob,contenidosob,pesosob);
+        Sobre SobreN= new Sobre(numReferenciasob,entregadosob,descripcionsob,remitentesob,20,tiposob,contenidosob,pesosob,fecha);
         //ASIGNAR PAQUETE - Revista//
         casilleroN.addEntregable(PaqueteN);
         casilleroN.addEntregable(RevistaN);
