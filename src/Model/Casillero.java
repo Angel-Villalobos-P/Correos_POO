@@ -56,6 +56,12 @@ public class Casillero{
         registroEntregable.add(entregable);
     }
 
+    /**
+     * Elimina un paquete del casillero
+     * @param entregable Un artículo retirado de tipo Entregable
+     * */
+    public void deleteEntregable(Entregable entregable) {registroEntregable.remove(entregable);}
+
     @Override
     public String toString() {
         return "Casillero{" + "Numero de casillero=" + numCasillero + 

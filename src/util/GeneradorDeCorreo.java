@@ -17,13 +17,12 @@ import javax.mail.internet.InternetAddress;
 public class GeneradorDeCorreo {
     Properties props = new Properties();
 
-  /*
+  /**
    * Mandar Correo: permite enviar un correo al usuario
-   * @param   pContrasenia    contrasenia a ser enviada al usuario
    * @param   pDestinatario   correo del destinatario
-   * 
+   * @param mensaje mensaje o cuerpo del correo
    */
-  public void mandarCorreo(String pDestinatario) {
+  public void mandarCorreo(String pDestinatario,String mensaje) {
     //Definicion de datos del correo del remitente
     String correoRemitente = "pooproyecto4@gmail.com";
     String claveCorreo = "qwerty!#$%";
@@ -32,8 +31,8 @@ public class GeneradorDeCorreo {
     Properties properties = new Properties();
     properties.put("mail.smtp.host", "smtp.gmail.com");
     properties.put("mail.smtp.starttls.enable", "true");
-    //properties.put("mail.smtp.port", "587");
-    properties.put("mail.smtp.port", "25");
+    properties.put("mail.smtp.port", "587");
+    //properties.put("mail.smtp.port", "25");
     properties.put("mail.smtp.auth", "true");
     properties.put("mail.user", correoRemitente);
     properties.put("mail.password", claveCorreo);
@@ -57,8 +56,7 @@ public class GeneradorDeCorreo {
 
       // Creacion del cuerpo del correo
       MimeBodyPart mimeBodyPart = new MimeBodyPart();
-      mimeBodyPart.setText("Estimado usuario(a):\n      A usted le llegó un paquete a su casillero. Por favor venga a la"
-                            + " sucursal y retire su paquete.\n\nGracias por elegirnos." );
+      mimeBodyPart.setText(mensaje);
 
       // Creacion del multipart para agregar el mensaje anterior
       Multipart multipart = new MimeMultipart();

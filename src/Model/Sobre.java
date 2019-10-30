@@ -6,6 +6,8 @@
 package Model;
 
 
+import java.util.Date;
+
 /**
  * Un artículo pequeño, puede ser entregado de varias maneras y tiene un peso.
  * */
@@ -24,24 +26,27 @@ public class Sobre extends Entregable {
      * @param peso peso del sobre en kg
      * @param contenido contenido del sobre, puede ser "Documento" u otra cosa
      * @param tipo forma de entrega del sobre, ej: manila, aéreo
+     * @param fechaRecibido fecha que se recibió el paquete
      * */
-    public Sobre(int numReferencia,boolean entregado, TipoEntregable descripcion,String remitente,double precio
-                 ,TipoSobre tipo, String contenido, double peso){
-        super(numReferencia,entregado,descripcion,remitente,precio);
+    public Sobre(int numReferencia, boolean entregado, TipoEntregable descripcion, String remitente, double precio
+                 , TipoSobre tipo, String contenido, double peso, Date fechaRecibido){
+        super(numReferencia,entregado,descripcion,remitente,precio,fechaRecibido);
         this.tipo=tipo;
         this.contenido=contenido;
         this.peso=peso;
     }
     @Override
     public String toString() {
-        return "Paquete{" + "Tipo de Sobre=" + tipo + 
+        return super.toString() +
+                "Paquete{" + "Tipo de Sobre=" + tipo +
                 ", Contenido=" + contenido + 
-                ", Peso=" + peso + "Kg, "; 
+                ", Peso=" + peso + "kg\n";
     }
 
     @Override
     /**
      * Calcula el impuesto del artículo
+     * @return cantidad de impuesto para el producto
      * */
     public double calcularImpuesto() {
         double impuestoDolar = 0;
@@ -62,9 +67,11 @@ public class Sobre extends Entregable {
     /**
      * Calcula el precio total con el impuesto y el descuento
      * @param rango Tipo de rango
+     * @return precio Total con el impuesto y el descuento
      * */
     public double calcularPrecio(TipoRango rango) {
-        return precio - precio*calcularDescuento(rango) + calcularImpuesto();
+        calcularDescuento(rango);
+        return precio - precio*descuento + calcularImpuesto();
     }
 
 }
