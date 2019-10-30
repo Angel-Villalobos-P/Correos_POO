@@ -46,6 +46,7 @@ public class Sobre extends Entregable {
     @Override
     /**
      * Calcula el impuesto del artículo
+     * @return cantidad de impuesto para el producto
      * */
     public double calcularImpuesto() {
         double impuestoDolar = 0;
@@ -66,6 +67,7 @@ public class Sobre extends Entregable {
     /**
      * Calcula el precio total con el impuesto y el descuento
      * @param rango Tipo de rango
+     * @return precio Total con el impuesto y el descuento
      * */
     public double calcularPrecio(TipoRango rango) {
         calcularDescuento(rango);

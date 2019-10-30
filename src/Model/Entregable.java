@@ -26,6 +26,7 @@ public abstract class Entregable {
      * @param numReferencia identificacion del artículo
      * @param precio precio del artículo
      * @param remitente la persona o compañía que envía el artículo
+     * @param fechaRecibida fecha de recepción al counter
      * */
     public Entregable(int numReferencia, boolean entregado, TipoEntregable descripcion, String remitente,double precio,Date fechaRecibida){
         this.numReferense=numReferencia;
@@ -136,6 +137,7 @@ public abstract class Entregable {
      * @param rango Tipo de rango
      * */
     public abstract double calcularPrecio(TipoRango rango);
+
 
     protected double getDescuento() {
         return descuento;

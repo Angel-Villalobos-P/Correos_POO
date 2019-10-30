@@ -29,7 +29,10 @@ public class Sistema {
         miCounter = null;
     }
 
-
+    /**
+     * Llama a la única instancia del objeto mismo
+     * @return la instancia del propio Sistema
+     * */
     public static Sistema getInstance(){
         if (sistema == null)
             sistema = new Sistema();
@@ -102,15 +105,22 @@ public class Sistema {
     /**
      * Registra el cliente
      * @param cliente cliente que quiere registrarse
-     * @return true si se registró exitosamente el cliente, false en los demás casos
      * */
     public void registrarCliente(Cliente cliente) {
         miCounter.registrarCliente(cliente);
     }
+
+    /**
+     * Registra el cliente
+     * @param cliente cliente que quiere registrarse
+     * @return true si se registró exitosamente el cliente, false en los demás casos
+     * */
     public boolean registrarClienteSiNo(Cliente cliente){
         boolean resultado = miCounter.registrarCliente(cliente);
         return resultado;
     }
+
+
     /**
      * Modifica un Cliente si encuentra el ID de dicho cliente
      * @param allDatos tipos varios que indican los datos a modificar del cliente
@@ -229,6 +239,10 @@ public class Sistema {
         }
         return "";
     }
+    /**
+     * Llama al counter para que haga un listado de los clientes con pendientes en su casillero
+     * @return lista de clientes
+     * */
     public String ListadoDeClientesConPaquetesPendientes(){
         String salida="";
         salida=miCounter.listadoClientesPaquetePendiente();
@@ -240,28 +254,26 @@ public class Sistema {
      * @return el string con todos los datos reportados
      * */
     public String generarReporte(Date fecha){
-        return "";
+        return miCounter.generarReporte(fecha);
     }
 
-    ////////No se que son
 
     /**
-     * Consulta los entregables de sin dueño de una fecha especifica
+     * Consulta los entregables recibidos de una fecha especifica
      * @param fecha tipo Date que indica la fecha de los entregables por buscar
-     * @return el casillero con entregables sin dueño
+     * @return la lista  con entregables en sus casilleros
      * */
     public String consultaEntregableRecibido(Date fecha){
-        return null;
+        return miCounter.consultarEntregablesRecibidos(fecha);
     }
 
     /**
      * Consulta los entregables entregados de una fecha especifica
      * @param fecha tipo Date que indica la fecha de los entregables por buscar
-     * @return el casillero con entregables entregados
+     * @return la lista con los entregables entregados
      * */
     public String consultaEntregableEntregado(Date fecha){
-
-        return "";
+        return miCounter.consultarEntregablesEntregados(fecha);
     }
 
 
@@ -270,7 +282,7 @@ public class Sistema {
      * @return Los clientes concatenados en un String
      * */
     public String consultarClientesConPendientes(){
-        return "";
+        return miCounter.listadoClientesPaquetePendiente();
     }
 
 
