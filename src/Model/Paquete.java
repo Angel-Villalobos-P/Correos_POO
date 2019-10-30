@@ -29,7 +29,6 @@ public class Paquete extends Entregable {
      * @param isElectric indica si el objeto es electrónico
      * @param isFragile indica si el objeto es frájil
      * @param fechaRecibida fecha en que se recibió el paquete
-     *
      * */
     public Paquete(int numReferencia, boolean entregado, TipoEntregable descripcion, String remitente, double precio, TipoEntrega formaDeEntrega, boolean isElectric, boolean isFragile, double peso, Date fechaRecibida){
         super(numReferencia,entregado,descripcion,remitente,precio,fechaRecibida);
@@ -50,6 +49,7 @@ public class Paquete extends Entregable {
     @Override
     /**
      * Calcula el impuesto del artículo
+     * @return cantidad de impuesto para el producto
      * */
     public double calcularImpuesto() {
         double impuestoDolar = peso * 0.02;
@@ -66,6 +66,7 @@ public class Paquete extends Entregable {
     /**
      * Calcula el precio total con el impuesto y el descuento
      * @param rango Tipo de rango
+     * @return precio Total con el impuesto y el descuento
      * */
     public double calcularPrecio(TipoRango rango) {
         calcularDescuento(rango);

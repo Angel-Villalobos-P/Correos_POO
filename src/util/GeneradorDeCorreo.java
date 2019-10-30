@@ -17,11 +17,10 @@ import javax.mail.internet.InternetAddress;
 public class GeneradorDeCorreo {
     Properties props = new Properties();
 
-  /*
+  /**
    * Mandar Correo: permite enviar un correo al usuario
-   * @param   pContrasenia    contrasenia a ser enviada al usuario
    * @param   pDestinatario   correo del destinatario
-   * 
+   * @param mensaje mensaje o cuerpo del correo
    */
   public void mandarCorreo(String pDestinatario,String mensaje) {
     //Definicion de datos del correo del remitente
@@ -32,8 +31,8 @@ public class GeneradorDeCorreo {
     Properties properties = new Properties();
     properties.put("mail.smtp.host", "smtp.gmail.com");
     properties.put("mail.smtp.starttls.enable", "true");
-    //properties.put("mail.smtp.port", "587");
-    properties.put("mail.smtp.port", "25");
+    properties.put("mail.smtp.port", "587");
+    //properties.put("mail.smtp.port", "25");
     properties.put("mail.smtp.auth", "true");
     properties.put("mail.user", correoRemitente);
     properties.put("mail.password", claveCorreo);

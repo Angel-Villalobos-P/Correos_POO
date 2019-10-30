@@ -25,7 +25,7 @@ public class Revista extends Entregable{
      * @param nombre nombre de la revista
      * @param isCatalogo indica si la revista es un catálogo
      * @param tema el tema de la revista
-     * @para
+     * @param fechaRecibido fecha de recepción al counter
      * */
     public Revista(int numReferencia, boolean entregado, TipoEntregable descripcion, String remitente, double precio, String nombre, boolean isCatalogo, TipoTemaRevista tema, Date fechaRecibido){
         super(numReferencia,entregado,descripcion,remitente,precio,fechaRecibido);
@@ -45,6 +45,7 @@ public class Revista extends Entregable{
     @Override
     /**
      * Calcula el impuesto del artículo
+     * @return cantidad de impuesto para el producto
      * */
     public double calcularImpuesto() {
         return isCatalogo ? 0:1;
@@ -53,6 +54,8 @@ public class Revista extends Entregable{
     @Override
     /**
      * Calcula el precio total con el impuesto y el descuento
+     * @param rango Tipo de rango
+     * @return precio Total con el impuesto y el descuento
      * */
     public double calcularPrecio(TipoRango rango) {
         calcularDescuento(rango);
