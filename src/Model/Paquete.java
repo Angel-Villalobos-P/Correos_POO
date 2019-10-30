@@ -68,7 +68,8 @@ public class Paquete extends Entregable {
      * @param rango Tipo de rango
      * */
     public double calcularPrecio(TipoRango rango) {
-        return precio - precio*calcularDescuento(rango) + calcularImpuesto();
+        calcularDescuento(rango);
+        return precio - precio*descuento + calcularImpuesto();
     }
 
 

@@ -29,6 +29,13 @@ public class Sistema {
         miCounter = null;
     }
 
+
+    public static Sistema getInstance(){
+        if (sistema == null)
+            sistema = new Sistema();
+        return sistema;
+    }
+
     /**
      *
      * Crea el counter
@@ -38,12 +45,6 @@ public class Sistema {
      * @param cantidadCasilleros Cantidad de casilleros que tendrá el counter
      * @return true si se logró crear el counter, false si ya se creó el counter anteriormente
      * */
-    public static Sistema getInstance(){
-        if (sistema == null)
-            sistema = new Sistema();
-        return sistema;
-    }
-
     public boolean crearCounter(String nombre, String cedula, Direccion direccion, int cantidadCasilleros) {
         if (miCounter == null) {
             this.miCounter = new Counter(nombre, cedula, direccion, cantidadCasilleros);
@@ -113,7 +114,7 @@ public class Sistema {
     /**
      * Modifica un Cliente si encuentra el ID de dicho cliente
      * @param allDatos tipos varios que indican los datos a modificar del cliente
-     * @return el booleano indicando si se pudo modificar el cliente
+     * @return el string indicando si se pudo modificar el cliente
      * */
     public String modificarCliente(int id,String nombre,String correo,String telefono,Direccion direccion,Date fecha,TipoSexo sexo){
         Cliente cliente = new Cliente(id, nombre, correo, telefono, direccion, fecha, sexo);
@@ -157,7 +158,7 @@ public class Sistema {
      * @return si se elimino o no el articulo
      * */
     public String retirarArticulo(int id){
-        miCounter.eliminarEntregable(id);
+        miCounter.retirarEntregable(id);
         return "listo";
     }
 
@@ -173,7 +174,7 @@ public class Sistema {
 
     /**
      * Consulta el casillero por medio del ID del Cliente
-     * @param id tipo String que indica el id del casillero por buscar
+     * @param idCliente tipo String que indica el id del casillero por buscar
      * @return el casillero encontrado
      * */
     public String consultarEstadoCasillero1(int idCliente){
